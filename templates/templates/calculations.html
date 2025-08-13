@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Pharmacy Calculations</h2>
+    <p>Practice common pharmacy calculations here. Click a problem to see the solution.</p>
+    <ul>
+        {% for calc in calculations %}
+            <li>
+                <strong>{{ calc.title }}</strong><br>
+                Problem: {{ calc.problem }}<br>
+                Solution: <span style="display:none;">{{ calc.solution }}</span>
+                <button onclick="this.previousElementSibling.style.display='block';">Show Solution</button>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

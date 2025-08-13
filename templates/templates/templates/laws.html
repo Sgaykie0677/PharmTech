@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Pharmacy Laws and Regulations</h2>
+    <p>Summaries of key federal pharmacy laws. Please consult your state board of pharmacy for specific regulations.</p>
+    <ul>
+        {% for law in laws %}
+            <li>
+                <strong>{{ law.title }}</strong><br>
+                {{ law.summary }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

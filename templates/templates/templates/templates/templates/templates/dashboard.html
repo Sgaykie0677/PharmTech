@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Welcome, {{ current_user.username }}!</h2>
+    <p>This is your personalized dashboard. You can access all training resources from here.</p>
+
+    <h3>Recent Medications</h3>
+    <ul>
+        {% for med in medications %}
+            <li><strong>{{ med.generic_name }}</strong> ({{ med.brand_name }}) - {{ med.indication }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('medications') }}">View all medications</a>
+
+    <h3>Calculations Practice</h3>
+    <ul>
+        {% for calc in calculations %}
+            <li><strong>{{ calc.title }}</strong>: {{ calc.problem }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('calculations') }}">View all calculations</a>
+
+    <h3>Laws & Regulations</h3>
+    <ul>
+        {% for law in laws %}
+            <li><strong>{{ law.title }}</strong>: {{ law.summary }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('laws') }}">View all laws</a>
+{% endblock %}

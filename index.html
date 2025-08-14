@@ -369,6 +369,25 @@
             display: none; /* Hidden until calculated */
         }
 
+        /* Video Embed Styling */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin-bottom: 1rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
         /* Footer Styling */
         footer {
             text-align: center;
@@ -467,8 +486,18 @@
             <p>A Pharmacy Technician plays a vital role in healthcare, working closely with pharmacists to ensure patients receive the correct medications safely and efficiently. Your responsibilities can range from preparing prescriptions and managing inventory to assisting with insurance and patient interactions. This platform aims to support your learning journey and help you stay current in this dynamic field.</p>
             <h3>Additional Resources:</h3>
             <ul>
-                <li><a href="https://www.youtube.com/watch?v=R2rX6S8Wn0s" target="_blank" class="youtube-player">What Does a Pharmacy Technician Do? (Video)</a></li>
-                <li><a href="https://www.youtube.com/watch?v=3-b_t-l7pG4" target="_blank" class="youtube-player">A Day in the Life of a Pharmacy Technician (Video)</a></li>
+                <li>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/R2rX6S8Wn0s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>What Does a Pharmacy Technician Do? (Video)</p>
+                </li>
+                <li>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/3-b_t-l7pG4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>A Day in the Life of a Pharmacy Technician (Video)</p>
+                </li>
             </ul>
         </section>
 
@@ -926,8 +955,18 @@
 
             <h3>Additional Resources:</h3>
             <ul>
-                <li><a href="https://www.youtube.com/watch?v=VdzIFSE-jfQ" target="_blank" class="youtube-player">Pharmacy Math Calculations: Full Series (Video)</a></li>
-                <li><a href="https://www.youtube.com/watch?v=uF_Tj61M4xU" target="_blank" class="youtube-player">Understanding Days Supply Calculations (Video)</a></li>
+                <li>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/VdzIFSE-jfQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>Pharmacy Math Calculations: Full Series (Video)</p>
+                </li>
+                <li>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/uF_Tj61M4xU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>Understanding Days Supply Calculations (Video)</p>
+                </li>
             </ul>
         </section>
 
@@ -1002,8 +1041,18 @@
             </ul>
             <h3>Additional Resources:</h3>
             <ul>
-                <li><a href="https://www.youtube.com/watch?v=R9K9F1D-y4c" target="_blank" class="youtube-player">Common Medical Abbreviations in Pharmacy (Video)</a></li>
-                <li><a href="https://www.youtube.com/watch?v=F3aJgUeK170" target="_blank" class="youtube-player">Medical Terminology for Pharmacy Technicians (Video)</a></li>
+                <li>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/R9K9F1D-y4c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>Common Medical Abbreviations in Pharmacy (Video)</p>
+                </li>
+                <li>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/F3aJgUeK170" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>Medical Terminology for Pharmacy Technicians (Video)</p>
+                </li>
             </ul>
         </section>
 
@@ -1014,12 +1063,22 @@
                 <li>
                     <h3>HIPAA (Health Insurance Portability and Accountability Act)</h3>
                     <p><strong>Summary:</strong> This federal law enacted in 1996 primarily aims to protect the privacy and security of patient health information. It establishes national standards for the security of electronic protected health information (ePHI) and sets forth rules regarding its use and disclosure. Pharmacy technicians must be familiar with HIPAA to ensure patient confidentiality and handle protected health information (PHI) appropriately.</p>
-                    <p><strong>Resource:</strong> <a href="https://www.youtube.com/watch?v=T_4y1r09d6A" target="_blank" class="youtube-player">HIPAA Basics for Healthcare Professionals (Video)</a></p>
+                    <p><strong>Resource:</strong>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/T_4y1r09d6A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p>HIPAA Basics for Healthcare Professionals (Video)</p>
+                    </p>
                 </li>
                 <li>
                     <h3>DEA (Drug Enforcement Administration) Regulations</h3>
                     <p><strong>Summary:</strong> The DEA enforces the Controlled Substances Act (CSA), which regulates the manufacture, distribution, and dispensing of controlled substances. Technicians need to understand the five schedules of controlled substances (C-I, C-II, C-III, C-IV, C-V) and the stringent requirements for their ordering, storage, inventory, dispensing, and record-keeping to prevent diversion and abuse.</p>
-                    <p><strong>Resource:</strong> <a href="https://www.youtube.com/watch?v=d_kCqT9c7f0" target="_blank" class="youtube-player">Controlled Substance Schedules Explained (Video)</a></p>
+                    <p><strong>Resource:</strong>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/d_kCqT9c7f0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p>Controlled Substance Schedules Explained (Video)</p>
+                    </p>
                 </li>
                 <li>
                     <h3>FD&C Act (Federal Food, Drug, and Cosmetic Act)</h3>
@@ -1056,7 +1115,12 @@
             </ul>
             <h3>Additional Resources:</h3>
             <ul>
-                <li><a href="https://www.youtube.com/watch?v=eLwL-KjJk8U" target="_blank" class="youtube-player">Pharmacy Technician: Career Overview (Video)</a></li>
+                <li>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/eLwL-KjJk8U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>Pharmacy Technician: Career Overview (Video)</p>
+                </li>
             </ul>
         </section>
 

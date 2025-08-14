@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,8 +59,7 @@
             margin: 2rem auto;
             padding: 1.5rem;
             background-color: #ffffff;
-            border-radius: 12px; /* Rounded corners */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+6px 15px rgba(0, 0, 0, 0.08);
         }
 
         /* Section Headings */
@@ -155,6 +155,63 @@
             border-radius: 6px;
         }
 
+        /* Quiz Specific Styling */
+        .quiz-question {
+            background-color: #f0f8ff; /* Light blue background for quiz questions */
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid #cceeff;
+        }
+
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+
+        .quiz-question label {
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            padding: 0.4rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .quiz-question label:hover {
+            background-color: #e0f0ff;
+        }
+
+        .quiz-question input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        #quiz-results {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            display: none; /* Hidden until quiz is submitted */
+        }
+
+        .correct-answer {
+            background-color: #d4edda; /* Light green */
+            border-left: 4px solid #28a745; /* Green border */
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .incorrect-answer {
+            background-color: #f8d7da; /* Light red */
+            border-left: 4px solid #dc3545; /* Red border */
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+        }
+
+
         /* Footer Styling */
         footer {
             text-align: center;
@@ -242,6 +299,7 @@
         <a href="#terminology">Terminology</a>
         <a href="#laws">Laws & Regulations</a>
         <a href="#roles">Roles & Responsibilities</a>
+        <a href="#quizzes">Quizzes</a> <!-- Added link to Quizzes -->
     </nav>
 
     <div class="container">
@@ -249,6 +307,11 @@
             <h2>Introduction to Pharmacy for Technicians</h2>
             <p>Welcome to your essential resource for mastering the core knowledge required for a successful career as a Pharmacy Technician. This hub is designed to provide clear, concise, and accessible information on key topics, from understanding medications to navigating complex calculations and abiding by critical laws and regulations.</p>
             <p>A Pharmacy Technician plays a vital role in healthcare, working closely with pharmacists to ensure patients receive the correct medications safely and efficiently. Your responsibilities can range from preparing prescriptions and managing inventory to assisting with insurance and patient interactions. This platform aims to support your learning journey and help you stay current in this dynamic field.</p>
+            <h3>Additional Resources:</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=wAty_5-c_eQ" target="_blank" class="youtube-player">What Does a Pharmacy Technician Do? (Video)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=qQJ0b16xL-8" target="_blank" class="youtube-player">A Day in the Life of a Pharmacy Technician (Video)</a></li>
+            </ul>
         </section>
 
         <section id="medications">
@@ -418,7 +481,7 @@
                     <tr><td>Xopenex HFA</td><td>Levalbuterol</td><td>Asthma, COPD (Rescue Inhaler)</td><td>Short-acting Beta-agonist (SABA)</td></tr>
                     <tr><td>Vibramycin</td><td>Doxycycline</td><td>Bacterial Infections, Acne</td><td>Tetracycline Antibiotic</td></tr>
                     <tr><td>Keflex</td><td>Cephalexin</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
-                    <tr><td>Bactrim</td><td>Sulfamethoxazole/Trimethoprim</td><td>Bacterial Infections</td><td>Antibiotic (Sulfonamide)</td></tr>
+                    <tr><td>Bactrim</td><td>Sulfamethoxazole/Trimethoprim</td><td>Bacterial Infections</td><td>Sulfonamide Antibiotic</td></tr>
                     <tr><td>Macrobid</td><td>Nitrofurantoin</td><td>Urinary Tract Infections</td><td>Antibiotic</td></tr>
                     <tr><td>Flagyl</td><td>Metronidazole</td><td>Bacterial/Parasitic Infections</td><td>Antibiotic</td></tr>
                     <tr><td>Cipro</td><td>Ciprofloxacin</td><td>Bacterial Infections</td><td>Fluoroquinolone Antibiotic</td></tr>
@@ -437,7 +500,7 @@
                     <tr><td>Soma</td><td>Carisoprodol</td><td>Muscle Spasms</td><td>Muscle Relaxant</td></tr>
                     <tr><td>Robaxin</td><td>Methocarbamol</td><td>Muscle Spasms</td><td>Muscle Relaxant</td></tr>
                     <tr><td>Zanaflex</td><td>Tizanidine</td><td>Muscle Spasticity</td><td>Muscle Relaxant</td></tr>
-                    <tr><td>Lioresal</td><td>Baclofen</td><td>Muscle Spasticity</td><td>Muscle Relaxant</td></tr>
+                    <tr><td><td>Lioresal</td><td>Baclofen</td><td>Muscle Spasticity</td><td>Muscle Relaxant</td></tr>
                     <tr><td>Plaquenil</td><td>Hydroxychloroquine</td><td>Malaria, Lupus, Rheumatoid Arthritis</td><td>Antimalarial, Immunosuppressant</td></tr>
                     <tr><td>Prednisone</td><td>Deltasone</td><td>Inflammation, Allergies</td><td>Corticosteroid</td></tr>
                     <tr><td>Methylprednisolone</td><td>Medrol</td><td>Inflammation, Allergies</td><td>Corticosteroid</td></tr>
@@ -536,8 +599,8 @@
                     <tr><td>Byetta</td><td>Exenatide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
                     <tr><td>Victoza</td><td>Liraglutide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
                     <tr><td>Invokana</td><td>Canagliflozin</td><td>Type 2 Diabetes</td><td>SGLT2 Inhibitor</td></tr>
-                    <tr><td>Farxiga</td><td>Dapagliflozin</td><td>Type 2 Diabetes</td><td>SGLT2 Inhibitor</td></tr>
-                    <tr><td>Jardiance</td><td>Empagliflozin</td><td>Type 2 Diabetes</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Farxiga</td><td>Dapagliflozin</td><td>Type 2 Diabetes, Heart Failure</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Jardiance</td><td>Empagliflozin</td><td>Type 2 Diabetes, Heart Failure</td><td>SGLT2 Inhibitor</td></tr>
                     <tr><td>Glyburide</td><td>Diabeta, Micronase</td><td>Type 2 Diabetes</td><td>Sulfonylurea</td></tr>
                     <tr><td>Glucotrol</td><td>Glipizide</td><td>Type 2 Diabetes</td><td>Sulfonylurea</td></tr>
                     <tr><td>Amaryl</td><td>Glimepiride</td><td>Type 2 Diabetes</td><td>Sulfonylurea</td></tr>
@@ -689,6 +752,11 @@
                     </div>
                 </li>
             </ul>
+            <h3>Additional Resources:</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=VdzIFSE-jfQ" target="_blank" class="youtube-player">Pharmacy Math Calculations: Full Series (Video)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=uF_Tj61M4xU" target="_blank" class="youtube-player">Understanding Days Supply Calculations (Video)</a></li>
+            </ul>
         </section>
 
         <section id="terminology">
@@ -698,7 +766,7 @@
             <h3>Basic Medical Terminology</h3>
             <ul>
                 <li><strong>Pharmacology:</strong> The study of drugs and their effects on living systems.</li>
-                <li><strong>Pharmacokinetics:</strong> The study of how a drug moves through the body (absorption, distribution, metabolism, excretion).</li>
+                <li><strong>Pharmacokinetics:</b> The study of how a drug moves through the body (absorption, distribution, metabolism, excretion).</li>
                 <li><strong>Adverse Reaction:</strong> An undesired or unexpected side effect of a medication.</li>
                 <li><strong>Analgesic:</strong> A medication used to relieve pain (e.g., ibuprofen).</li>
                 <li><strong>Antipyretic:</strong> A medication used to reduce fever (e.g., acetaminophen).</li>
@@ -760,6 +828,11 @@
                 <li><strong>DOB</strong>: Date of Birth</li>
                 <li><strong>SSN</strong>: Social Security Number</li>
             </ul>
+            <h3>Additional Resources:</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=R9K9F1D-y4c" target="_blank" class="youtube-player">Common Medical Abbreviations in Pharmacy (Video)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=F3aJgUeK170" target="_blank" class="youtube-player">Medical Terminology for Pharmacy Technicians (Video)</a></li>
+            </ul>
         </section>
 
         <section id="laws">
@@ -769,10 +842,12 @@
                 <li>
                     <h3>HIPAA (Health Insurance Portability and Accountability Act)</h3>
                     <p><strong>Summary:</strong> This federal law enacted in 1996 primarily aims to protect the privacy and security of patient health information. It establishes national standards for the security of electronic protected health information (ePHI) and sets forth rules regarding its use and disclosure. Pharmacy technicians must be familiar with HIPAA to ensure patient confidentiality and handle protected health information (PHI) appropriately.</p>
+                    <p><strong>Resource:</strong> <a href="https://www.youtube.com/watch?v=T_4y1r09d6A" target="_blank" class="youtube-player">HIPAA Basics for Healthcare Professionals (Video)</a></p>
                 </li>
                 <li>
                     <h3>DEA (Drug Enforcement Administration) Regulations</h3>
                     <p><strong>Summary:</strong> The DEA enforces the Controlled Substances Act (CSA), which regulates the manufacture, distribution, and dispensing of controlled substances. Technicians need to understand the five schedules of controlled substances (C-I, C-II, C-III, C-IV, C-V) and the stringent requirements for their ordering, storage, inventory, dispensing, and record-keeping to prevent diversion and abuse.</p>
+                    <p><strong>Resource:</strong> <a href="https://www.youtube.com/watch?v=d_kCqT9c7f0" target="_blank" class="youtube-player">Controlled Substance Schedules Explained (Video)</a></p>
                 </li>
                 <li>
                     <h3>FD&C Act (Federal Food, Drug, and Cosmetic Act)</h3>
@@ -807,16 +882,25 @@
                 <li><strong>Maintaining Records:</strong> Accurately documenting all dispensing activities, controlled substance logs, and patient profiles.</li>
                 <li><strong>Compliance:</strong> Adhering to all federal and state laws, regulations, and pharmacy policies, including HIPAA for patient privacy.</li>
             </ul>
+            <h3>Additional Resources:</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=6J_G4_n2Xh4" target="_blank" class="youtube-player">Pharmacy Technician: Career Overview (Video)</a></li>
+            </ul>
+        </section>
+
+        <section id="quizzes">
+            <h2>Quizzes</h2>
+            <p>Test your knowledge with these interactive quizzes!</p>
+
+            <h3>General Pharmacy Knowledge Quiz</h3>
+            <div id="quiz-container"></div>
+            <button class="solution-button" onclick="submitQuiz()">Submit Quiz</button>
+            <div id="quiz-results"></div>
         </section>
 
         <section id="flashcards" style="display:none;">
             <h2>Flashcards (Coming Soon!)</h2>
             <p>This section will feature interactive flashcards to help you memorize key drug names, classifications, and abbreviations. Stay tuned for this study tool!</p>
-        </section>
-
-        <section id="quizzes" style="display:none;">
-            <h2>Quizzes (Coming Soon!)</h2>
-            <p>Test your knowledge with interactive quizzes on various pharmacy topics. Challenge yourself and track your progress!</p>
         </section>
 
         <section id="pharmacology" style="display:none;">
@@ -841,7 +925,85 @@
                 button.textContent = "Show Solution";
             }
         }
+
+        // --- Quiz Logic ---
+        const quizQuestions = [
+            {
+                question: "What is the generic name for Lipitor?",
+                options: ["Lisinopril", "Atorvastatin", "Metformin", "Amlodipine"],
+                correctAnswer: "Atorvastatin"
+            },
+            {
+                question: "Which abbreviation means 'twice daily'?",
+                options: ["QID", "TID", "BID", "PRN"],
+                correctAnswer: "BID"
+            },
+            {
+                question: "What does HIPAA primarily protect?",
+                options: ["Drug prices", "Patient health information", "Pharmacy inventory", "Pharmacist licenses"],
+                correctAnswer: "Patient health information"
+            },
+            {
+                question: "Clark's Rule is used for dosage calculations based on a child's:",
+                options: ["Age", "Height", "Weight", "Gender"],
+                correctAnswer: "Weight"
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        const quizResults = document.getElementById('quiz-results');
+
+        function loadQuiz() {
+            quizContainer.innerHTML = ''; // Clear previous questions
+            quizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('quiz-question');
+                questionDiv.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
+                q.options.forEach(option => {
+                    const label = document.createElement('label');
+                    label.innerHTML = `
+                        <input type="radio" name="question${index}" value="${option}">
+                        ${option}
+                    `;
+                    questionDiv.appendChild(label);
+                });
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            quizResults.innerHTML = ''; // Clear previous results
+            quizResults.style.display = 'block';
+
+            quizQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const resultDiv = document.createElement('div');
+
+                if (selectedOption) {
+                    if (selectedOption.value === q.correctAnswer) {
+                        score++;
+                        resultDiv.classList.add('correct-answer');
+                        resultDiv.textContent = `Question ${index + 1}: Correct! (${q.correctAnswer})`;
+                    } else {
+                        resultDiv.classList.add('incorrect-answer');
+                        resultDiv.textContent = `Question ${index + 1}: Incorrect. The correct answer was ${q.correctAnswer}. You chose ${selectedOption.value}.`;
+                    }
+                } else {
+                    resultDiv.classList.add('incorrect-answer');
+                    resultDiv.textContent = `Question ${index + 1}: You didn't answer this question. The correct answer was ${q.correctAnswer}.`;
+                }
+                quizResults.appendChild(resultDiv);
+            });
+
+            const totalQuestions = quizQuestions.length;
+            const finalScoreDiv = document.createElement('div');
+            finalScoreDiv.innerHTML = `<h3>Your Score: ${score} out of ${totalQuestions}</h3>`;
+            quizResults.prepend(finalScoreDiv); // Add score to the top of results
+        }
+
+        // Load quiz when the page loads
+        document.addEventListener('DOMContentLoaded', loadQuiz);
     </script>
 </body>
 </html>
-

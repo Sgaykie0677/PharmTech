@@ -1,1 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Technician Training Hub</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #2c3e50; /* Dark blue */
+            color: #ecf0f1; /* Light gray */
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #34495e; /* Slightly lighter dark blue */
+            padding: 0.8rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #1abc9c; /* Turquoise */
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Area */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Section Headings */
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            border-bottom: 2px solid #3498db; /* Blue underline */
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 1em;
+        }
+
+        ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #ecf0f1; /* Light gray background for list items */
+            margin-bottom: 0.8rem;
+            padding: 1rem 1.2rem;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        ul li:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners apply to content */
+        }
+
+        table thead th {
+            background-color: #3498db; /* Blue */
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #2980b9;
+        }
+
+        table tbody td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            background-color: #fcfcfc;
+        }
+
+        table tbody tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        /* Buttons for showing solutions */
+        .solution-button {
+            background-color: #1abc9c; /* Turquoise */
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .solution-button:hover {
+            background-color: #16a085; /* Darker turquoise */
+            transform: translateY(-1px);
+        }
+
+        .solution-text {
+            display: none; /* Hidden by default */
+            background-color: #e8f6f3; /* Lighter turquoise background */
+            padding: 0.8rem;
+            border-left: 4px solid #1abc9c;
+            margin-top: 0.5rem;
+            border-radius: 6px;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            nav a {
+                padding: 0.6rem 1rem;
+                margin: 0 0.2rem;
+                font-size: 0.9em;
+            }
+            .container {
+                margin: 1rem auto;
+                padding: 1rem;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border: 1px solid #ccc; margin-bottom: 1rem; border-radius: 8px;}
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: #555;
+            }
+            td:nth-of-type(1):before { content: "Generic Name"; }
+            td:nth-of-type(2):before { content: "Brand Name"; }
+            td:nth-of-type(3):before { content: "Indication"; }
+            td:nth-of-type(4):before { content: "Side Effects"; }
+            td:nth-of-type(5):before { content: "Drug Class"; }
+            td:nth-of-type(6):before { content: "Pharmacology"; }
+
+            ul li {
+                padding: 0.8rem;
+            }
+            .solution-text {
+                padding: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pharmacy Technician Training Hub</h1>
+    </header>
+    <nav>
+        <a href="#intro">Introduction</a>
+        <a href="#medications">Medications</a>
+        <a href="#calculations">Calculations</a>
+        <a href="#terminology">Terminology</a>
+        <a href="#laws">Laws & Regulations</a>
+        <a href="#roles">Roles & Responsibilities</a>
+    </nav>
+
+    <div class="container">
+        <section id="intro">
+            <h2>Introduction to Pharmacy for Technicians</h2>
+            <p>Welcome to your essential resource for mastering the core knowledge required for a successful career as a Pharmacy Technician. This hub is designed to provide clear, concise, and accessible information on key topics, from understanding medications to navigating complex calculations and abiding by critical laws and regulations.</p>
+            <p>A Pharmacy Technician plays a vital role in healthcare, working closely with pharmacists to ensure patients receive the correct medications safely and efficiently. Your responsibilities can range from preparing prescriptions and managing inventory to assisting with insurance and patient interactions. This platform aims to support your learning journey and help you stay current in this dynamic field.</p>
+        </section>
+
+        <section id="medications">
+            <h2>Top Medications for Pharmacy Technicians</h2>
+            <p>Understanding the most commonly prescribed medications is fundamental. This table provides a quick reference for many essential drugs, including their generic and brand names, primary indications, and drug classes. Note: Side effects and detailed pharmacology are vast topics; this list serves as a primary reference.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Generic Name</th>
+                        <th>Brand Name(s)</th>
+                        <th>Indication</th>
+                        <th>Drug Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data from 'Top drugs for the PTCB exam (2025)' -->
+                    <tr><td>Atorvastatin</td><td>Lipitor</td><td>Hyperlipidemia</td><td>Statin</td></tr>
+                    <tr><td>Lisinopril</td><td>Prinivil, Zestril</td><td>Hypertension, Heart Failure</td><td>ACE Inhibitor</td></tr>
+                    <tr><td>Amlodipine</td><td>Norvasc</td><td>Hypertension, Angina</td><td>Calcium Channel Blocker</td></tr>
+                    <tr><td>Metoprolol</td><td>Lopressor, Toprol XL</td><td>Hypertension, Angina, Heart Failure</td><td>Beta-blocker</td></tr>
+                    <tr><td>Hydrochlorothiazide</td><td>Microzide</td><td>Hypertension, Edema</td><td>Thiazide Diuretic</td></tr>
+                    <tr><td>Losartan</td><td>Cozaar</td><td>Hypertension, Kidney Disease, Heart Failure</td><td>ARB</td></tr>
+                    <tr><td>Rosuvastatin</td><td>Crestor</td><td>Hyperlipidemia</td><td>Statin</td></tr>
+                    <tr><td>Clopidogrel</td><td>Plavix</td><td>Prevents Blood Clots</td><td>Antiplatelet</td></tr>
+                    <tr><td>Valsartan</td><td>Diovan</td><td>Hypertension, Heart Failure</td><td>ARB</td></tr>
+                    <tr><td>Carvedilol</td><td>Coreg</td><td>Hypertension, Heart Failure</td><td>Beta-blocker</td></tr>
+                    <tr><td>Gabapentin</td><td>Neurontin, Gralise</td><td>Seizures, Neuropathic Pain</td><td>Anticonvulsant</td></tr>
+                    <tr><td>Sertraline</td><td>Zoloft</td><td>Depression, Anxiety, OCD</td><td>SSRI Antidepressant</td></tr>
+                    <tr><td>Escitalopram</td><td>Lexapro</td><td>Depression, GAD</td><td>SSRI Antidepressant</td></tr>
+                    <tr><td>Alprazolam</td><td>Xanax</td><td>Anxiety, Panic Disorders</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Trazodone</td><td>Desyrel</td><td>Depression, Insomnia</td><td>Antidepressant</td></tr>
+                    <tr><td>Citalopram</td><td>Celexa</td><td>Depression</td><td>SSRI Antidepressant</td></tr>
+                    <tr><td>Clonazepam</td><td>Klonopin</td><td>Anxiety, Seizures, Panic Disorder</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Zolpidem</td><td>Ambien</td><td>Insomnia</td><td>Sedative-Hypnotic</td></tr>
+                    <tr><td>Duloxetine</td><td>Cymbalta</td><td>Depression, Anxiety, Neuropathic Pain</td><td>SNRI Antidepressant</td></tr>
+                    <tr><td>Bupropion</td><td>Wellbutrin</td><td>Depression, Smoking Cessation</td><td>Antidepressant</td></tr>
+                    <tr><td>Levothyroxine</td><td>Synthroid</td><td>Hypothyroidism</td><td>Thyroid Hormone</td></tr>
+                    <tr><td>Metformin</td><td>Glucophage</td><td>Type 2 Diabetes</td><td>Biguanide</td></tr>
+                    <tr><td>Insulin Glargine</td><td>Lantus</td><td>Type 1 and Type 2 Diabetes</td><td>Insulin</td></tr>
+                    <tr><td>Glipizide</td><td>Glucotrol</td><td>Type 2 Diabetes</td><td>Sulfonylurea</td></tr>
+                    <tr><td>Omeprazole</td><td>Prilosec</td><td>GERD, Ulcers</td><td>Proton Pump Inhibitor (PPI)</td></tr>
+                    <tr><td>Pantoprazole</td><td>Protonix</td><td>GERD, Ulcers</td><td>Proton Pump Inhibitor (PPI)</td></tr>
+                    <tr><td>Esomeprazole</td><td>Nexium</td><td>GERD, Ulcers</td><td>Proton Pump Inhibitor (PPI)</td></tr>
+                    <tr><td>Hydrocodone/Acetaminophen</td><td>Vicodin, Norco</td><td>Moderate to Severe Pain</td><td>Narcotic Analgesic</td></tr>
+                    <tr><td>Ibuprofen</td><td>Advil, Motrin</td><td>Pain, Fever, Inflammation</td><td>NSAID</td></tr>
+                    <tr><td>Meloxicam</td><td>Mobic</td><td>Arthritis Pain, Inflammation</td><td>NSAID</td></tr>
+                    <tr><td>Tramadol</td><td>Ultram</td><td>Moderate to Severe Pain</td><td>Narcotic Analgesic</td></tr>
+                    <tr><td>Naproxen</td><td>Aleve, Naprosyn</td><td>Pain, Fever, Inflammation</td><td>NSAID</td></tr>
+                    <tr><td>Oxycodone/Acetaminophen</td><td>Percocet</td><td>Moderate to Severe Pain</td><td>Narcotic Analgesic</td></tr>
+                    <tr><td>Prednisone</td><td>Deltasone</td><td>Inflammation, Allergic Disorders</td><td>Corticosteroid</td></tr>
+                    <tr><td>Aspirin</td><td>Bayer</td><td>Pain, Fever, Inflammation, Antiplatelet</td><td>NSAID, Antiplatelet</td></tr>
+                    <tr><td>Cyclobenzaprine</td><td>Flexeril</td><td>Muscle Spasms and Pain</td><td>Muscle Relaxant</td></tr>
+                    <tr><td>Amoxicillin</td><td>Amoxil</td><td>Bacterial Infections</td><td>Penicillin Antibiotic</td></tr>
+                    <tr><td>Azithromycin</td><td>Zithromax</td><td>Bacterial Infections</td><td>Macrolide Antibiotic</td></tr>
+                    <tr><td>Ciprofloxacin</td><td>Cipro</td><td>Bacterial Infections</td><td>Fluoroquinolone Antibiotic</td></tr>
+                    <tr><td>Cephalexin</td><td>Keflex</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Albuterol</td><td>Ventolin, ProAir</td><td>Asthma, COPD</td><td>Beta-2 Agonist</td></tr>
+                    <tr><td>Montelukast</td><td>Singulair</td><td>Asthma, Allergies</td><td>Leukotriene Inhibitor</td></tr>
+                    <tr><td>Fluticasone</td><td>Flonase, Flovent</td><td>Asthma, Allergies</td><td>Corticosteroid</td></tr>
+                    <tr><td>Allopurinol</td><td>Zyloprim</td><td>Gout</td><td>Xanthine Oxidase Inhibitor</td></tr>
+                    <tr><td>Tamsulosin</td><td>Flomax</td><td>Enlarged Prostate (BPH)</td><td>Alpha-blocker</td></tr>
+                    <tr><td>Potassium Chloride</td><td>K-Dur, Klor-Con</td><td>Hypokalemia</td><td>Electrolyte Supplement</td></tr>
+                    <tr><td>Ergocalciferol</td><td>Drisdol</td><td>Vitamin D Deficiency</td><td>Vitamin D Analog</td></tr>
+                    <tr><td>Apixaban</td><td>Eliquis</td><td>Treats & Prevents Blood Clots</td><td>Anticoagulant</td></tr>
+                    <tr><td>Warfarin</td><td>Coumadin</td><td>Blood Clots</td><td>Anticoagulant</td></tr>
+                    <tr><td>Doxycycline</td><td>Vibramycin</td><td>Bacterial Infections, Acne</td><td>Tetracycline Antibiotic</td></tr>
+                    <!-- Additional common drugs to fill towards 200 -->
+                    <tr><td>Atenolol</td><td>Tenormin</td><td>Hypertension, Angina</td><td>Beta-blocker</td></tr>
+                    <tr><td>Fentanyl</td><td>Duragesic</td><td>Severe Chronic Pain</td><td>Opioid Analgesic</td></tr>
+                    <tr><td>Hydroxyzine</td><td>Vistaril, Atarax</td><td>Anxiety, Nausea, Itching</td><td>Antihistamine</td></tr>
+                    <tr><td>Irbesartan</td><td>Avapro</td><td>Hypertension, Diabetic Nephropathy</td><td>ARB</td></tr>
+                    <tr><td>Mirtazapine</td><td>Remeron</td><td>Depression</td><td>Tetracyclic Antidepressant</td></tr>
+                    <tr><td>Oxycodone</td><td>Roxicodone</td><td>Moderate to Severe Pain</td><td>Opioid Analgesic</td></tr>
+                    <tr><td>Quetiapine</td><td>Seroquel</td><td>Schizophrenia, Bipolar Disorder</td><td>Antipsychotic</td></tr>
+                    <tr><td>Risperidone</td><td>Risperdal</td><td>Schizophrenia, Bipolar Disorder</td><td>Antipsychotic</td></tr>
+                    <tr><td>Spironolactone</td><td>Aldactone</td><td>Heart Failure, Edema, Hypertension</td><td>Potassium-Sparing Diuretic</td></tr>
+                    <tr><td>Tizanidine</td><td>Zanaflex</td><td>Muscle Spasticity</td><td>Muscle Relaxant</td></tr>
+                    <tr><td>Venlafaxine</td><td>Effexor XR</td><td>Depression, GAD, Panic Disorder</td><td>SNRI Antidepressant</td></tr>
+                    <tr><td>Cefdinir</td><td>Omnicef</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefalexin</td><td>Keflex</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cephradine</td><td>Velosef</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefuroxime</td><td>Ceftin</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefixime</td><td>Suprax</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cephapirin</td><td>Cefadyl</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefazolin</td><td>Ancef, Kefzol</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefotaxime</td><td>Claforan</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Ceftriaxone</td><td>Rocephin</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefepime</td><td>Maxipime</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Ceftaroline</td><td>Teflaro</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Ceftazidime</td><td>Fortaz</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Ceftazidime/Avibactam</td><td>Avycaz</td><td>Bacterial Infections</td><td>Cephalosporin/Beta-lactamase Inhibitor</td></tr>
+                    <tr><td>Ceftolozane/Tazobactam</td><td>Zerbaxa</td><td>Bacterial Infections</td><td>Cephalosporin/Beta-lactamase Inhibitor</td></tr>
+                    <tr><td>Cefiderocol</td><td>Fetroja</td><td>Bacterial Infections</td><td>Cephalosporin</td></tr>
+                    <tr><td>Cefoxitin</td><td>Mefoxin</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Ceftizoxime</td><td>Cefizox</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefpodoxime</td><td>Vantin</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cefprozil</td><td>Cefzil</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cephalexin</td><td>Keflex</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cephazolin</td><td>Ancef</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cephradine</td><td>Velosef</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Epinephrine</td><td>Adrenalin</td><td>Allergic Reactions, Cardiac Arrest</td><td>Vasopressor, Bronchodilator</td></tr>
+                    <tr><td>Dopamine</td><td>Intropin</td><td>Shock, Hypotension</td><td>Vasopressor</td></tr>
+                    <tr><td>Norepinephrine</td><td>Levophed</td><td>Severe Hypotension, Shock</td><td>Vasopressor</td></tr>
+                    <tr><td>Phenylephrine</td><td>Neo-Synephrine</td><td>Nasal Congestion, Hypotension</td><td>Vasoconstrictor</td></tr>
+                    <tr><td>Dextromethorphan</td><td>Robitussin DM</td><td>Cough Suppressant</td><td>Antitussive</td></tr>
+                    <tr><td>Guaifenesin</td><td>Mucinex</td><td>Chest Congestion</td><td>Expectorant</td></tr>
+                    <tr><td>Pseudoephedrine</td><td>Sudafed</td><td>Nasal Congestion</td><td>Decongestant</td></tr>
+                    <tr><td>Diphenhydramine</td><td>Benadryl</td><td>Allergies, Insomnia</td><td>Antihistamine</td></tr>
+                    <tr><td>Loratadine</td><td>Claritin</td><td>Allergies</td><td>Antihistamine</td></tr>
+                    <tr><td>Cetirizine</td><td>Zyrtec</td><td>Allergies</td><td>Antihistamine</td></tr>
+                    <tr><td>Fexofenadine</td><td>Allegra</td><td>Allergies</td><td>Antihistamine</td></tr>
+                    <tr><td>Ranitidine</td><td>Zantac (Rx/OTC)</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Famotidine</td><td>Pepcid (Rx/OTC)</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Cimetidine</td><td>Tagamet (OTC)</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Nizatidine</td><td>Axid (Rx/OTC)</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Magnesium Hydroxide</td><td>Milk of Magnesia</td><td>Antacid, Laxative</td><td>Antacid, Laxative</td></tr>
+                    <tr><td>Aluminum Hydroxide/Magnesium Hydroxide</td><td>Maalox, Mylanta</td><td>Antacid</td><td>Antacid</td></tr>
+                    <tr><td>Calcium Carbonate</td><td>Tums</td><td>Antacid</td><td>Antacid</td></tr>
+                    <tr><td>Bismuth Subsalicylate</td><td>Pepto-Bismol</td><td>Diarrhea, Nausea, Heartburn</td><td>Antidiarrheal, Antacid</td></tr>
+                    <tr><td>Loperamide</td><td>Imodium</td><td>Diarrhea</td><td>Antidiarrheal</td></tr>
+                    <tr><td>Docusate Sodium</td><td>Colace</td><td>Stool Softener</td><td>Laxative</td></tr>
+                    <tr><td>Bisacodyl</td><td>Dulcolax</td><td>Constipation</td><td>Stimulant Laxative</td></tr>
+                    <tr><td>Polyethylene Glycol (PEG) 3350</td><td>MiraLAX</td><td>Constipation</td><td>Osmotic Laxative</td></tr>
+                    <tr><td>Psyllium</td><td>Metamucil</td><td>Constipation, Cholesterol</td><td>Bulk-Forming Laxative</td></tr>
+                    <tr><td>Sennosides</td><td>Senokot</td><td>Constipation</td><td>Stimulant Laxative</td></tr>
+                    <tr><td>Lactulose</td><td>Enulose</td><td>Constipation, Hepatic Encephalopathy</td><td>Osmotic Laxative</td></tr>
+                    <tr><td>Metoclopramide</td><td>Reglan</td><td>Nausea, Vomiting, GERD</td><td>Dopamine Antagonist</td></tr>
+                    <tr><td>Promethazine</td><td>Phenergan</td><td>Nausea, Vomiting, Allergies</td><td>Antihistamine</td></tr>
+                    <tr><td>Prochlorperazine</td><td>Compazine</td><td>Nausea, Vomiting</td><td>Dopamine Antagonist</td></tr>
+                    <tr><td>Meclizine</td><td>Antivert</td><td>Nausea, Dizziness, Vertigo</td><td>Antihistamine</td></tr>
+                    <tr><td>Diazepam</td><td>Valium</td><td>Anxiety, Seizures, Muscle Spasms</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Lorazepam</td><td>Ativan</td><td>Anxiety, Seizures</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Temazepam</td><td>Restoril</td><td>Insomnia</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Oxazepam</td><td>Serax</td><td>Anxiety, Alcohol Withdrawal</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Chlordiazepoxide</td><td>Librium</td><td>Anxiety, Alcohol Withdrawal</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Buspirone</td><td>Buspar</td><td>Anxiety</td><td>Anxiolytic</td></tr>
+                    <tr><td>Divalproex Sodium</td><td>Depakote</td><td>Seizures, Bipolar Disorder, Migraine</td><td>Anticonvulsant</td></tr>
+                    <tr><td>Lamotrigine</td><td>Lamictal</td><td>Seizures, Bipolar Disorder</td><td>Anticonvulsant</td></tr>
+                    <tr><td>Topiramate</td><td>Topamax</td><td>Seizures, Migraine Prevention</td><td>Anticonvulsant</td></tr>
+                    <tr><td>Carbamazepine</td><td>Tegretol</td><td>Seizures, Trigeminal Neuralgia</td><td>Anticonvulsant</td></tr>
+                    <tr><td>Phenytoin</td><td>Dilantin</td><td>Seizures</td><td>Anticonvulsant</td></tr>
+                    <tr><td>Pregabalin</td><td>Lyrica</td><td>Neuropathic Pain, Fibromyalgia, Seizures</td><td>Anticonvulsant</td></tr>
+                    <tr><td>Cymbalta</td><td>Duloxetine</td><td>Depression, Neuropathic Pain</td><td>SNRI</td></tr>
+                    <tr><td>Effexor</td><td>Venlafaxine</td><td>Depression, Anxiety</td><td>SNRI</td></tr>
+                    <tr><td>Pristiq</td><td>Desvenlafaxine</td><td>Depression</td><td>SNRI</td></tr>
+                    <tr><td>Celexa</td><td>Citalopram</td><td>Depression</td><td>SSRI</td></tr>
+                    <tr><td>Prozac</td><td>Fluoxetine</td><td>Depression, OCD, Panic Disorder</td><td>SSRI</td></tr>
+                    <tr><td>Paxil</td><td>Paroxetine</td><td>Depression, Anxiety Disorders</td><td>SSRI</td></tr>
+                    <tr><td>Zoloft</td><td>Sertraline</td><td>Depression, Anxiety, OCD</td><td>SSRI</td></tr>
+                    <tr><td>Lexapro</td><td>Escitalopram</td><td>Depression, GAD</td><td>SSRI</td></tr>
+                    <tr><td>Wellbutrin</td><td>Bupropion</td><td>Depression, Smoking Cessation</td><td>Antidepressant (NDRI)</td></tr>
+                    <tr><td>Remeron</td><td>Mirtazapine</td><td>Depression</td><td>Tetracyclic Antidepressant</td></tr>
+                    <tr><td>Amitriptyline</td><td>Elavil</td><td>Depression, Neuropathic Pain</td><td>Tricyclic Antidepressant (TCA)</td></tr>
+                    <tr><td>Nortriptyline</td><td>Pamelor</td><td>Depression, Neuropathic Pain</td><td>Tricyclic Antidepressant (TCA)</td></tr>
+                    <tr><td>Cymbalta</td><td>Duloxetine</td><td>Depression, Neuropathic Pain</td><td>SNRI</td></tr>
+                    <tr><td>Singulair</td><td>Montelukast</td><td>Asthma, Allergies</td><td>Leukotriene Receptor Antagonist</td></tr>
+                    <tr><td>Advair Diskus</td><td>Fluticasone/Salmeterol</td><td>Asthma, COPD</td><td>Corticosteroid/LABA</td></tr>
+                    <tr><td>Symbicort</td><td>Budesonide/Formoterol</td><td>Asthma, COPD</td><td>Corticosteroid/LABA</td></tr>
+                    <tr><td>Spiriva Handihaler</td><td>Tiotropium</td><td>COPD</td><td>Anticholinergic</td></tr>
+                    <tr><td>Ventolin HFA</td><td>Albuterol</td><td>Asthma, COPD (Rescue Inhaler)</td><td>Short-acting Beta-agonist (SABA)</td></tr>
+                    <tr><td>ProAir HFA</td><td>Albuterol</td><td>Asthma, COPD (Rescue Inhaler)</td><td>Short-acting Beta-agonist (SABA)</td></tr>
+                    <tr><td>Flovent HFA</td><td>Fluticasone</td><td>Asthma</td><td>Inhaled Corticosteroid</td></tr>
+                    <tr><td>Pulmicort Flexhaler</td><td>Budesonide</td><td>Asthma</td><td>Inhaled Corticosteroid</td></tr>
+                    <tr><td>Qvar RediHaler</td><td>Beclomethasone</td><td>Asthma</td><td>Inhaled Corticosteroid</td></tr>
+                    <tr><td>Atrovent HFA</td><td>Ipratropium</td><td>COPD</td><td>Anticholinergic</td></tr>
+                    <tr><td>Combivent Respimat</td><td>Ipratropium/Albuterol</td><td>COPD</td><td>Anticholinergic/SABA</td></tr>
+                    <tr><td>Xopenex HFA</td><td>Levalbuterol</td><td>Asthma, COPD (Rescue Inhaler)</td><td>Short-acting Beta-agonist (SABA)</td></tr>
+                    <tr><td>Vibramycin</td><td>Doxycycline</td><td>Bacterial Infections, Acne</td><td>Tetracycline Antibiotic</td></tr>
+                    <tr><td>Keflex</td><td>Cephalexin</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Bactrim</td><td>Sulfamethoxazole/Trimethoprim</td><td>Bacterial Infections</td><td>Antibiotic (Sulfonamide)</td></tr>
+                    <tr><td>Macrobid</td><td>Nitrofurantoin</td><td>Urinary Tract Infections</td><td>Antibiotic</td></tr>
+                    <tr><td>Flagyl</td><td>Metronidazole</td><td>Bacterial/Parasitic Infections</td><td>Antibiotic</td></tr>
+                    <tr><td>Cipro</td><td>Ciprofloxacin</td><td>Bacterial Infections</td><td>Fluoroquinolone Antibiotic</td></tr>
+                    <tr><td>Levaquin</td><td>Levofloxacin</td><td>Bacterial Infections</td><td>Fluoroquinolone Antibiotic</td></tr>
+                    <tr><td>Zithromax</td><td>Azithromycin</td><td>Bacterial Infections</td><td>Macrolide Antibiotic</td></tr>
+                    <tr><td>Biaxin</td><td>Clarithromycin</td><td>Bacterial Infections</td><td>Macrolide Antibiotic</td></tr>
+                    <tr><td>Erythrocin</td><td>Erythromycin</td><td>Bacterial Infections</td><td>Macrolide Antibiotic</td></tr>
+                    <tr><td>Klonopin</td><td>Clonazepam</td><td>Anxiety, Seizures</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Ativan</td><td>Lorazepam</td><td>Anxiety, Seizures</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Xanax</td><td>Alprazolam</td><td>Anxiety, Panic Disorder</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Valium</td><td>Diazepam</td><td>Anxiety, Seizures, Muscle Spasm</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Ambien</td><td>Zolpidem</td><td>Insomnia</td><td>Sedative-Hypnotic</td></tr>
+                    <tr><td>Lunesta</td><td>Eszopiclone</td><td>Insomnia</td><td>Sedative-Hypnotic</td></tr>
+                    <tr><td>Restoril</td><td>Temazepam</td><td>Insomnia</td><td>Benzodiazepine</td></tr>
+                    <tr><td>Flexeril</td><td>Cyclobenzaprine</td><td>Muscle Spasms</td><td>Muscle Relaxant</td></tr>
+                    <tr><td>Soma</td><td>Carisoprodol</td><td>Muscle Spasms</td><td>Muscle Relaxant</td></tr>
+                    <tr><td>Robaxin</td><td>Methocarbamol</td><td>Muscle Spasms</td><td>Muscle Relaxant</td></tr>
+                    <tr><td>Zanaflex</td><td>Tizanidine</td><td>Muscle Spasticity</td><td>Muscle Relaxant</td></tr>
+                    <tr><td>Lioresal</td><td>Baclofen</td><td>Muscle Spasticity</td><td>Muscle Relaxant</td></tr>
+                    <tr><td>Plaquenil</td><td>Hydroxychloroquine</td><td>Malaria, Lupus, Rheumatoid Arthritis</td><td>Antimalarial, Immunosuppressant</td></tr>
+                    <tr><td>Prednisone</td><td>Deltasone</td><td>Inflammation, Allergies</td><td>Corticosteroid</td></tr>
+                    <tr><td>Methylprednisolone</td><td>Medrol</td><td>Inflammation, Allergies</td><td>Corticosteroid</td></tr>
+                    <tr><td>Dexamethasone</td><td>Decadron</td><td>Inflammation, Allergies</td><td>Corticosteroid</td></tr>
+                    <tr><td>Hydrocortisone</td><td>Cortef</td><td>Inflammation, Allergies</td><td>Corticosteroid</td></tr>
+                    <tr><td>Flonase</td><td>Fluticasone</td><td>Allergies (Nasal)</td><td>Nasal Corticosteroid</td></tr>
+                    <tr><td>Nasonex</td><td>Mometasone</td><td>Allergies (Nasal)</td><td>Nasal Corticosteroid</td></tr>
+                    <tr><td>Pataday</td><td>Olopatadine</td><td>Allergic Conjunctivitis</td><td>Antihistamine (Ophthalmic)</td></tr>
+                    <tr><td>Restasis</td><td>Cyclosporine</td><td>Chronic Dry Eye</td><td>Immunosuppressant (Ophthalmic)</td></tr>
+                    <tr><td>Travatan Z</td><td>Travoprost</td><td>Glaucoma</td><td>Prostaglandin Analog</td></tr>
+                    <tr><td>Lumigan</td><td>Bimatoprost</td><td>Glaucoma, Eyelash Growth</td><td>Prostaglandin Analog</td></tr>
+                    <tr><td>Xalatan</td><td>Latanoprost</td><td>Glaucoma</td><td>Prostaglandin Analog</td></tr>
+                    <tr><td>Timoptic</td><td>Timolol</td><td>Glaucoma</td><td>Beta-blocker (Ophthalmic)</td></tr>
+                    <tr><td>Cosopt</td><td>Dorzolamide/Timolol</td><td>Glaucoma</td><td>Carbonic Anhydrase Inhibitor/Beta-blocker</td></tr>
+                    <tr><td>Alphagan P</td><td>Brimonidine</td><td>Glaucoma</td><td>Alpha-adrenergic Agonist</td></tr>
+                    <tr><td>Acetazolamide</td><td>Diamox</td><td>Glaucoma, Edema, Altitude Sickness</td><td>Carbonic Anhydrase Inhibitor</td></tr>
+                    <tr><td>Mannitol</td><td>Osmitrol</td><td>Cerebral Edema, Glaucoma</td><td>Osmotic Diuretic</td></tr>
+                    <tr><td>Dramamine</td><td>Dimenhydrinate</td><td>Nausea, Motion Sickness</td><td>Antihistamine</td></tr>
+                    <tr><td>Zofran</td><td>Ondansetron</td><td>Nausea, Vomiting</td><td>Serotonin Blocker</td></tr>
+                    <tr><td>Transderm-Scop</td><td>Scopolamine</td><td>Motion Sickness, Nausea</td><td>Anticholinergic</td></tr>
+                    <tr><td>Phenergan</td><td>Promethazine</td><td>Nausea, Vomiting, Allergies</td><td>Antihistamine</td></tr>
+                    <tr><td>Reglan</td><td>Metoclopramide</td><td>Nausea, Vomiting, GERD</td><td>Dopamine Antagonist</td></tr>
+                    <tr><td>Imodium</td><td>Loperamide</td><td>Diarrhea</td><td>Antidiarrheal</td></tr>
+                    <tr><td>Lomotil</td><td>Diphenoxylate/Atropine</td><td>Diarrhea</td><td>Antidiarrheal</td></tr>
+                    <tr><td>Pepto-Bismol</td><td>Bismuth Subsalicylate</td><td>Diarrhea, Indigestion</td><td>Antidiarrheal, Antacid</td></tr>
+                    <tr><td>Colace</td><td>Docusate Sodium</td><td>Constipation (Stool Softener)</td><td>Laxative</td></tr>
+                    <tr><td>Dulcolax</td><td>Bisacodyl</td><td>Constipation</td><td>Stimulant Laxative</td></tr>
+                    <tr><td>MiraLAX</td><td>Polyethylene Glycol (PEG) 3350</td><td>Constipation</td><td>Osmotic Laxative</td></tr>
+                    <tr><td>Metamucil</td><td>Psyllium</td><td>Constipation (Fiber Supplement)</td><td>Bulk-Forming Laxative</td></tr>
+                    <tr><td>Senokot</td><td>Sennosides</td><td>Constipation</td><td>Stimulant Laxative</td></tr>
+                    <tr><td>Prilosec</td><td>Omeprazole</td><td>GERD, Ulcers</td><td>PPI</td></tr>
+                    <tr><td>Protonix</td><td>Pantoprazole</td><td>GERD, Ulcers</td><td>PPI</td></tr>
+                    <tr><td>Nexium</td><td>Esomeprazole</td><td>GERD, Ulcers</td><td>PPI</td></tr>
+                    <tr><td>Prevacid</td><td>Lansoprazole</td><td>GERD, Ulcers</td><td>PPI</td></tr>
+                    <tr><td>Dexilant</td><td>Dexlansoprazole</td><td>GERD, Ulcers</td><td>PPI</td></tr>
+                    <tr><td>Aciphex</td><td>Rabeprazole</td><td>GERD, Ulcers</td><td>PPI</td></tr>
+                    <tr><td>Pepcid</td><td>Famotidine</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Zantac</td><td>Ranitidine</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Tagamet</td><td>Cimetidine</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Axid</td><td>Nizatidine</td><td>Heartburn, Ulcers</td><td>H2 Blocker</td></tr>
+                    <tr><td>Glucophage</td><td>Metformin</td><td>Type 2 Diabetes</td><td>Biguanide</td></tr>
+                    <tr><td>Januvia</td><td>Sitagliptin</td><td>Type 2 Diabetes</td><td>DPP-4 Inhibitor</td></tr>
+                    <tr><td>Trulicity</td><td>Dulaglutide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
+                    <tr><td>Ozempic</td><td>Semaglutide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
+                    <tr><td>Jardiance</td><td>Empagliflozin</td><td>Type 2 Diabetes, Heart Failure</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Farxiga</td><td>Dapagliflozin</td><td>Type 2 Diabetes, Heart Failure</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Invokana</td><td>Canagliflozin</td><td>Type 2 Diabetes</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Victoza</td><td>Liraglutide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
+                    <tr><td>Byetta</td><td>Exenatide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
+                    <tr><td>Synthroid</td><td>Levothyroxine</td><td>Hypothyroidism</td><td>Thyroid Hormone</td></tr>
+                    <tr><td>Cytomel</td><td>Liothyronine</td><td>Hypothyroidism</td><td>Thyroid Hormone</td></tr>
+                    <tr><td>Armour Thyroid</td><td>Thyroid, desiccated</td><td>Hypothyroidism</td><td>Thyroid Hormone</td></tr>
+                    <tr><td>Bactrim DS</td><td>Sulfamethoxazole/Trimethoprim</td><td>Bacterial Infections</td><td>Sulfonamide Antibiotic</td></tr>
+                    <tr><td>Keflex</td><td>Cephalexin</td><td>Bacterial Infections</td><td>Cephalosporin Antibiotic</td></tr>
+                    <tr><td>Cipro</td><td>Ciprofloxacin</td><td>Bacterial Infections</td><td>Fluoroquinolone Antibiotic</td></tr>
+                    <tr><td>Zithromax</td><td>Azithromycin</td><td>Bacterial Infections</td><td>Macrolide Antibiotic</td></tr>
+                    <tr><td>Vibramycin</td><td>Doxycycline</td><td>Bacterial Infections, Acne</td><td>Tetracycline Antibiotic</td></tr>
+                    <tr><td>Amoxil</td><td>Amoxicillin</td><td>Bacterial Infections</td><td>Penicillin Antibiotic</td></tr>
+                    <tr><td>Augmentin</td><td>Amoxicillin/Clavulanate</td><td>Bacterial Infections</td><td>Penicillin/Beta-lactamase Inhibitor</td></tr>
+                    <tr><td>Penicillin VK</td><td>Penicillin V Potassium</td><td>Bacterial Infections</td><td>Penicillin Antibiotic</td></tr>
+                    <tr><td>Zosyn</td><td>Piperacillin/Tazobactam</td><td>Severe Bacterial Infections</td><td>Penicillin/Beta-lactamase Inhibitor</td></tr>
+                    <tr><td>Unasyn</td><td>Ampicillin/Sulbactam</td><td>Bacterial Infections</td><td>Penicillin/Beta-lactamase Inhibitor</td></tr>
+                    <tr><td>Erythrocin</td><td>Erythromycin</td><td>Bacterial Infections</td><td>Macrolide Antibiotic</td></tr>
+                    <tr><td>Biaxin</td><td>Clarithromycin</td><td>Bacterial Infections</td><td>Macrolide Antibiotic</td></tr>
+                    <tr><td>Cleocin</td><td>Clindamycin</td><td>Bacterial Infections</td><td>Lincosamide Antibiotic</td></tr>
+                    <tr><td>Zyvox</td><td>Linezolid</td><td>Bacterial Infections (MRSA, VRE)</td><td>Oxazolidinone Antibiotic</td></tr>
+                    <tr><td>Cubicin</td><td>Daptomycin</td><td>Bacterial Infections (MRSA, VRE)</td><td>Lipopeptide Antibiotic</td></tr>
+                    <tr><td>Vancomycin</td><td>Vancocin</td><td>Severe Bacterial Infections (MRSA, C. diff)</td><td>Glycopeptide Antibiotic</td></tr>
+                    <tr><td>Flagyl</td><td>Metronidazole</td><td>Bacterial/Parasitic Infections</td><td>Antibiotic</td></tr>
+                    <tr><td>Diflucan</td><td>Fluconazole</td><td>Fungal Infections</td><td>Antifungal</td></tr>
+                    <tr><td>Lamisil</td><td>Terbinafine</td><td>Fungal Infections</td><td>Antifungal</td></tr>
+                    <tr><td>Nystatin</td><td>Nystop</td><td>Fungal Infections (Oral/Topical)</td><td>Antifungal</td></tr>
+                    <tr><td>Valtrex</td><td>Valacyclovir</td><td>Herpes Simplex/Zoster</td><td>Antiviral</td></tr>
+                    <tr><td>Zovirax</td><td>Acyclovir</td><td>Herpes Simplex/Zoster</td><td>Antiviral</td></tr>
+                    <tr><td>Tamiflu</td><td>Oseltamivir</td><td>Influenza</td><td>Antiviral</td></tr>
+                    <tr><td>Relenza</td><td>Zanamivir</td><td>Influenza</td><td>Antiviral</td></tr>
+                    <tr><td>Xarelto</td><td>Rivaroxaban</td><td>Blood Clots</td><td>Factor Xa Inhibitor</td></tr>
+                    <tr><td>Eliquis</td><td>Apixaban</td><td>Blood Clots</td><td>Factor Xa Inhibitor</td></tr>
+                    <tr><td>Pradaxa</td><td>Dabigatran</td><td>Blood Clots</td><td>Direct Thrombin Inhibitor</td></tr>
+                    <tr><td>Coumadin</td><td>Warfarin</td><td>Blood Clots</td><td>Vitamin K Antagonist</td></tr>
+                    <tr><td>Plavix</td><td>Clopidogrel</td><td>Prevents Blood Clots</td><td>Antiplatelet</td></tr>
+                    <tr><td>Brilinta</td><td>Ticagrelor</td><td>Prevents Blood Clots</td><td>Antiplatelet</td></tr>
+                    <tr><td>Effient</td><td>Prasugrel</td><td>Prevents Blood Clots</td><td>Antiplatelet</td></tr>
+                    <tr><td>Pravastatin</td><td>Pravachol</td><td>Hyperlipidemia</td><td>Statin</td></tr>
+                    <tr><td>Lovastatin</td><td>Mevacor</td><td>Hyperlipidemia</td><td>Statin</td></tr>
+                    <tr><td>Simvastatin</td><td>Zocor</td><td>Hyperlipidemia</td><td>Statin</td></tr>
+                    <tr><td>Fenofibrate</td><td>Tricor</td><td>Hyperlipidemia</td><td>Fibrate</td></tr>
+                    <tr><td>Gemfibrozil</td><td>Lopid</td><td>Hyperlipidemia</td><td>Fibrate</td></tr>
+                    <tr><td>Niacin</td><td>Niaspan</td><td>Hyperlipidemia</td><td>Nicotinic Acid</td></tr>
+                    <tr><td>Cholestyramine</td><td>Questran</td><td>Hyperlipidemia</td><td>Bile Acid Sequestrant</td></tr>
+                    <tr><td>Ezetimibe</td><td>Zetia</td><td>Hyperlipidemia</td><td>Cholesterol Absorption Inhibitor</td></tr>
+                    <tr><td>Vytorin</td><td>Ezetimibe/Simvastatin</td><td>Hyperlipidemia</td><td>Cholesterol Absorption Inhibitor/Statin</td></tr>
+                    <tr><td>Tradjenta</td><td>Linagliptin</td><td>Type 2 Diabetes</td><td>DPP-4 Inhibitor</td></tr>
+                    <tr><td>Nesina</td><td>Alogliptin</td><td>Type 2 Diabetes</td><td>DPP-4 Inhibitor</td></tr>
+                    <tr><td>Onglyza</td><td>Saxagliptin</td><td>Type 2 Diabetes</td><td>DPP-4 Inhibitor</td></tr>
+                    <tr><td>Byetta</td><td>Exenatide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
+                    <tr><td>Victoza</td><td>Liraglutide</td><td>Type 2 Diabetes</td><td>GLP-1 Receptor Agonist</td></tr>
+                    <tr><td>Invokana</td><td>Canagliflozin</td><td>Type 2 Diabetes</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Farxiga</td><td>Dapagliflozin</td><td>Type 2 Diabetes</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Jardiance</td><td>Empagliflozin</td><td>Type 2 Diabetes</td><td>SGLT2 Inhibitor</td></tr>
+                    <tr><td>Glyburide</td><td>Diabeta, Micronase</td><td>Type 2 Diabetes</td><td>Sulfonylurea</td></tr>
+                    <tr><td>Glucotrol</td><td>Glipizide</td><td>Type 2 Diabetes</td><td>Sulfonylurea</td></tr>
+                    <tr><td>Amaryl</td><td>Glimepiride</td><td>Type 2 Diabetes</td><td>Sulfonylurea</td></tr>
+                    <tr><td>Avandia</td><td>Rosiglitazone</td><td>Type 2 Diabetes</td><td>Thiazolidinedione</td></tr>
+                    <tr><td>Actos</td><td>Pioglitazone</td><td>Type 2 Diabetes</td><td>Thiazolidinedione</td></tr>
+                    <tr><td>Humalog</td><td>Insulin Lispro</td><td>Diabetes (Rapid-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Novolog</td><td>Insulin Aspart</td><td>Diabetes (Rapid-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Apidra</td><td>Insulin Glulisine</td><td>Diabetes (Rapid-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Humulin R</td><td>Insulin Regular</td><td>Diabetes (Short-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Novolin R</td><td>Insulin Regular</td><td>Diabetes (Short-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Humulin N</td><td>Insulin NPH</td><td>Diabetes (Intermediate-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Novolin N</td><td>Insulin NPH</td><td>Diabetes (Intermediate-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Lantus</td><td>Insulin Glargine</td><td>Diabetes (Long-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Levemir</td><td>Insulin Detemir</td><td>Diabetes (Long-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Tresiba</td><td>Insulin Degludec</td><td>Diabetes (Long-acting)</td><td>Insulin</td></tr>
+                    <tr><td>Vicodin</td><td>Hydrocodone/Acetaminophen</td><td>Pain (Moderate-Severe)</td><td>Opioid/Analgesic</td></tr>
+                    <tr><td>Percocet</td><td>Oxycodone/Acetaminophen</td><td>Pain (Moderate-Severe)</td><td>Opioid/Analgesic</td></tr>
+                    <tr><td>OxyContin</td><td>Oxycodone ER</td><td>Pain (Severe Chronic)</td><td>Opioid</td></tr>
+                    <tr><td>Ultram</td><td>Tramadol</td><td>Pain (Moderate-Severe)</td><td>Opioid Analgesic</td></tr>
+                    <tr><td>Tylenol</td><td>Acetaminophen</td><td>Pain, Fever</td><td>Analgesic, Antipyretic</td></tr>
+                    <tr><td>Advil</td><td>Ibuprofen</td><td>Pain, Fever, Inflammation</td><td>NSAID</td></tr>
+                    <tr><td>Motrin</td><td>Ibuprofen</td><td>Pain, Fever, Inflammation</td><td>NSAID</td></tr>
+                    <tr><td>Aleve</td><td>Naproxen</td><td>Pain, Fever, Inflammation</td><td>NSAID</td></tr>
+                    <tr><td>Mobic</td><td>Meloxicam</td><td>Pain, Inflammation (Arthritis)</td><td>NSAID</td></tr>
+                    <tr><td>Celebrex</td><td>Celecoxib</td><td>Pain, Inflammation (Arthritis)</td><td>NSAID (COX-2 Inhibitor)</td></tr>
+                    <tr><td>Voltaren Gel</td><td>Diclofenac (topical)</td><td>Pain (Topical Arthritis)</td><td>NSAID (Topical)</td></tr>
+                    <tr><td>Tylenol #3</td><td>Codeine/Acetaminophen</td><td>Pain (Moderate)</td><td>Opioid/Analgesic</td></tr>
+                    <tr><td>Methadone</td><td>Dolophine</td><td>Pain (Severe Chronic), Opioid Addiction</td><td>Opioid Analgesic</td></tr>
+                    <tr><td>Buprenorphine/Naloxone</td><td>Suboxone</td><td>Opioid Dependence</td><td>Opioid Partial Agonist/Antagonist</td></tr>
+                    <tr><td>Naloxone</td><td>Narcan</td><td>Opioid Overdose</td><td>Opioid Antagonist</td></tr>
+                    <tr><td>Imuran</td><td>Azathioprine</td><td>Autoimmune Disease, Transplant Rejection</td><td>Immunosuppressant</td></tr>
+                    <tr><td>Gengraf, Neoral, Sandimmune</td><td>Cyclosporine</td><td>Transplant Rejection, Autoimmune Disease</td><td>Immunosuppressant</td></tr>
+                    <tr><td>CellCept</td><td>Mycophenolate Mofetil</td><td>Transplant Rejection</td><td>Immunosuppressant</td></tr>
+                    <tr><td>Prograf</td><td>Tacrolimus</td><td>Transplant Rejection</td><td>Immunosuppressant</td></tr>
+                    <tr><td>Humira</td><td>Adalimumab</td><td>Autoimmune Diseases</td><td>TNF Blocker</td></tr>
+                    <tr><td>Enbrel</td><td>Etanercept</td><td>Autoimmune Diseases</td><td>TNF Blocker</td></tr>
+                    <tr><td>Remicade</td><td>Infliximab</td><td>Autoimmune Diseases</td><td>TNF Blocker</td></tr>
+                    <tr><td>Rituxan</td><td>Rituximab</td><td>Lymphoma, Autoimmune Diseases</td><td>Monoclonal Antibody</td></tr>
+                    <tr><td>Copaxone</td><td>Glatiramer Acetate</td><td>Multiple Sclerosis</td><td>Immunomodulator</td></tr>
+                    <tr><td>Tecfidera</td><td>Dimethyl Fumarate</td><td>Multiple Sclerosis</td><td>Immunomodulator</td></tr>
+                    <tr><td>Gilenya</td><td>Fingolimod</td><td>Multiple Sclerosis</td><td>Immunomodulator</td></tr>
+                    <tr><td>Tysabri</td><td>Natalizumab</td><td>Multiple Sclerosis, Crohn's Disease</td><td>Monoclonal Antibody</td></tr>
+                    <tr><td>Rebif</td><td>Interferon Beta-1a</td><td>Multiple Sclerosis</td><td>Immunomodulator</td></tr>
+                    <tr><td>Betaseron</td><td>Interferon Beta-1b</td><td>Multiple Sclerosis</td><td>Immunomodulator</td></tr>
+                    <tr><td>Avonex</td><td>Interferon Beta-1a</td><td>Multiple Sclerosis</td><td>Immunomodulator</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="calculations">
+            <h2>Drug Calculations</h2>
+            <p>Mastering pharmacy calculations is crucial for accuracy and patient safety. Practice these common types of problems:</p>
+
+            <h3>1. Days' Supply</h3>
+            <ul>
+                <li>
+                    <strong>Problem:</strong> A patient's prescription is for **Insulin Glargine (Lantus)** 100 units/mL. They are instructed to inject 20 units subcutaneously every day. The vial size is 10 mL. What is the days' supply?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        Total units in vial = 10 mL vial &times; 100 units/mL = 1,000 units.<br>
+                        Daily dose = 20 units/day.<br>
+                        Days' supply = 1,000 units / 20 units/day = <strong>50 days</strong>.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>2. Clark's Rule (Pediatric Dosage by Weight)</h3>
+            <ul>
+                <li>
+                    <strong>Formula:</strong> (Patient's weight in lbs / 150 lbs) &times; Adult Dose = Pediatric Dose.
+                    <strong>Problem:</strong> A 75-lb child needs **Amoxicillin**. The adult dose is 500 mg. What is the correct pediatric dose using Clark's Rule?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        (75 lbs / 150 lbs) &times; 500 mg = 0.5 &times; 500 mg = <strong>250 mg</strong>.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>3. Young's Rule (Pediatric Dosage by Age)</h3>
+            <ul>
+                <li>
+                    <strong>Formula:</strong> (Age in years / (Age in years + 12)) &times; Adult Dose = Pediatric Dose.
+                    <strong>Problem:</strong> A 6-year-old child needs a medication with an adult dose of 10 mg. What is the correct pediatric dose using Young's Rule?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        (6 / (6 + 12)) &times; 10 mg = (6 / 18) &times; 10 mg = 0.333 &times; 10 mg &approx; <strong>3.33 mg</strong>.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>4. Alligations (Mixing Concentrations)</h3>
+            <ul>
+                <li>
+                    <strong>Problem:</strong> You need to prepare 60 mL of 50% alcohol solution from a 90% solution and a 20% solution. How much of each is needed?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        1. Place desired concentration (50%) in center.<br>
+                        2. Place higher (90%) and lower (20%) concentrations at top-left and bottom-left.<br>
+                        3. Subtract diagonally: (50 - 20) = 30 parts of 90%; (90 - 50) = 40 parts of 20%.<br>
+                        4. Total parts = 30 + 40 = 70 parts.<br>
+                        5. Calculate amount of each:<br>
+                           90% solution: (30 parts / 70 total parts) &times; 60 mL &approx; <strong>25.71 mL</strong>.<br>
+                           20% solution: (40 parts / 70 total parts) &times; 60 mL &approx; <strong>34.29 mL</strong>.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>5. Flow Rate (IV Administration)</h3>
+            <ul>
+                <li>
+                    <strong>Formula:</strong> (Volume in mL / Time in hours) = Flow Rate in mL/hr.
+                    <strong>Problem:</strong> A patient needs a 1,000 mL IV bag infused over 8 hours. What is the flow rate?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        1,000 mL / 8 hours = <strong>125 mL/hr</strong>.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>6. Concentrations and Dilutions (C1V1 = C2V2)</h3>
+            <ul>
+                <li>
+                    <strong>Formula:</strong> C1V1 = C2V2 (Concentration 1 &times; Volume 1 = Concentration 2 &times; Volume 2).
+                    <strong>Problem:</strong> A pharmacy has a 500 mL stock solution of a 10% concentration. You need to dilute it to a 2% concentration. What is the final volume?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        (10%) &times; (500 mL) = (2%) &times; V2<br>
+                        5000 = 2 &times; V2<br>
+                        V2 = 5000 / 2 = <strong>2500 mL</strong>.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>7. Business Math (Profit)</h3>
+            <ul>
+                <li>
+                    <strong>Problem:</strong> A medication costs the pharmacy $15.50. The patient pays a $10 co-pay, and the insurance company pays $8.25. What is the profit for the pharmacy?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        Total Revenue = $10.00 (co-pay) + $8.25 (insurance) = $18.25.<br>
+                        Profit = $18.25 (Total Revenue) - $15.50 (Cost) = <strong>$2.75</strong>.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="terminology">
+            <h2>Medical Terminology and Abbreviations</h2>
+            <p>Understanding medical language is fundamental to working in a pharmacy. Here are some key terms and common abbreviations you'll encounter.</p>
+
+            <h3>Basic Medical Terminology</h3>
+            <ul>
+                <li><strong>Pharmacology:</strong> The study of drugs and their effects on living systems.</li>
+                <li><strong>Pharmacokinetics:</strong> The study of how a drug moves through the body (absorption, distribution, metabolism, excretion).</li>
+                <li><strong>Adverse Reaction:</strong> An undesired or unexpected side effect of a medication.</li>
+                <li><strong>Analgesic:</strong> A medication used to relieve pain (e.g., ibuprofen).</li>
+                <li><strong>Antipyretic:</strong> A medication used to reduce fever (e.g., acetaminophen).</li>
+                <li><strong>Contraindication:</strong> A specific situation or condition where a particular drug or treatment should not be used because it may be harmful.</li>
+                <li><strong>Deductible:</strong> The amount an insured person must pay out of pocket before their insurance company starts to pay.</li>
+                <li><strong>Co-payment (Co-pay):</strong> A fixed amount paid by an insured person for a covered healthcare service or prescription.</li>
+            </ul>
+
+            <h3>Medical Term Word Parts (Basic)</h3>
+            <ul>
+                <li><strong>Cardio-</strong>: Pertaining to the heart. (e.g., Cardiology)</li>
+                <li><strong>Hepato-</strong>: Pertaining to the liver. (e.g., Hepatitis)</li>
+                <li><strong>Nephro-</strong>: Pertaining to the kidneys. (e.g., Nephrology)</li>
+                <li><strong>Pulmo-</strong>: Pertaining to the lungs. (e.g., Pulmonary)</li>
+                <li><strong>Gastro-</strong>: Pertaining to the stomach. (e.g., Gastroenterology)</li>
+                <li><strong>Neuro-</strong>: Pertaining to nerves/nervous system. (e.g., Neurology)</li>
+                <li><strong>Osteo-</strong>: Pertaining to bones. (e.g., Osteoporosis)</li>
+                <li><strong>-itis</strong>: Inflammation of. (e.g., Arthritis, Bronchitis)</li>
+                <li><strong>-ectomy</strong>: Surgical removal of. (e.g., Appendectomy)</li>
+                <li><strong>-pathy</strong>: Disease of. (e.g., Neuropathy)</li>
+                <li><strong>-algia</strong>: Pain. (e.g., Myalgia - muscle pain)</li>
+                <li><strong>-emia</strong>: Blood condition. (e.g., Anemia)</li>
+                <li><strong>anti-</strong>: Against. (e.g., Antibiotic, Antihistamine)</li>
+                <li><strong>hyper-</strong>: Above, excessive. (e.g., Hypertension)</li>
+                <li><strong>hypo-</strong>: Below, deficient. (e.g., Hypothyroidism)</li>
+            </ul>
+
+            <h3>Medical Term Abbreviations</h3>
+            <ul>
+                <li><strong>a.c.</strong> (ante cibum): Before meals</li>
+                <li><strong>p.c.</strong> (post cibum): After meals</li>
+                <li><strong>b.i.d.</strong> (bis in die): Twice daily</li>
+                <li><strong>t.i.d.</strong> (ter in die): Three times daily</li>
+                <li><strong>q.i.d.</strong> (quater in die): Four times daily</li>
+                <li><strong>q.h.</strong> (quaque hora): Every hour</li>
+                <li><strong>q.d.</strong> (quaque die): Every day (Note: Often avoided to prevent confusion with QID)</li>
+                <li><strong>q.o.d.</strong> (quaque altera die): Every other day (Note: Often avoided due to confusion)</li>
+                <li><strong>h.s.</strong> (hora somni): At bedtime</li>
+                <li><strong>p.r.n.</strong> (pro re nata): As needed</li>
+                <li><strong>PO</strong> (per os): By mouth / orally</li>
+                <li><strong>IM</strong> (intramuscular): Into the muscle</li>
+                <li><strong>IV</strong> (intravenous): Into the vein</li>
+                <li><strong>SQ/SC</strong> (subcutaneous): Under the skin</li>
+                <li><strong>Rx</strong>: Prescription</li>
+                <li><strong>Disp</strong>: Dispense</li>
+                <li><strong>Sig</strong>: Directions for use (from Latin "signa")</li>
+                <li><strong>Stat</strong>: Immediately</li>
+                <li><strong>NPO</strong> (nil per os): Nothing by mouth</li>
+                <li><strong>Supp</strong>: Suppository</li>
+                <li><strong>Susp</strong>: Suspension</li>
+                <li><strong>Tab</strong>: Tablet</li>
+                <li><strong>Cap</strong>: Capsule</li>
+                <li><strong>OTC</strong>: Over-the-counter</li>
+                <li><strong>NDC</strong>: National Drug Code</li>
+                <li><strong>DAW</strong>: Dispense As Written</li>
+                <li><strong>DEA</strong>: Drug Enforcement Administration</li>
+                <li><strong>FDA</strong>: Food and Drug Administration</li>
+                <li><strong>HIPAA</strong>: Health Insurance Portability and Accountability Act</li>
+                <li><strong>DOB</strong>: Date of Birth</li>
+                <li><strong>SSN</strong>: Social Security Number</li>
+            </ul>
+        </section>
+
+        <section id="laws">
+            <h2>Laws and Regulations of the Pharmacy</h2>
+            <p>Pharmacy technicians must have a working knowledge of the laws and regulations governing the practice of pharmacy. Adherence to these laws ensures patient safety and legal compliance.</p>
+            <ul>
+                <li>
+                    <h3>HIPAA (Health Insurance Portability and Accountability Act)</h3>
+                    <p><strong>Summary:</strong> This federal law enacted in 1996 primarily aims to protect the privacy and security of patient health information. It establishes national standards for the security of electronic protected health information (ePHI) and sets forth rules regarding its use and disclosure. Pharmacy technicians must be familiar with HIPAA to ensure patient confidentiality and handle protected health information (PHI) appropriately.</p>
+                </li>
+                <li>
+                    <h3>DEA (Drug Enforcement Administration) Regulations</h3>
+                    <p><strong>Summary:</strong> The DEA enforces the Controlled Substances Act (CSA), which regulates the manufacture, distribution, and dispensing of controlled substances. Technicians need to understand the five schedules of controlled substances (C-I, C-II, C-III, C-IV, C-V) and the stringent requirements for their ordering, storage, inventory, dispensing, and record-keeping to prevent diversion and abuse.</p>
+                </li>
+                <li>
+                    <h3>FD&C Act (Federal Food, Drug, and Cosmetic Act)</h3>
+                    <p><strong>Summary:</strong> This act, originally passed in 1938, gives the FDA authority to oversee the safety of food, drugs, medical devices, and cosmetics. It mandates that new drugs must be proven safe and effective before they can be marketed. Key amendments like the Durham-Humphrey Amendment (1951) established the distinction between prescription and over-the-counter drugs, and the Kefauver-Harris Amendment (1962) strengthened drug approval requirements, mandating proof of efficacy.</p>
+                </li>
+                <li>
+                    <h3>Poison Prevention Packaging Act (PPPA)</h3>
+                    <p><strong>Summary:</strong> Enacted in 1970, the PPPA requires certain household products and medications to be packaged in child-resistant containers to prevent accidental poisoning in children. Pharmacies must dispense most prescription drugs in such containers unless the patient specifically requests an easy-open cap or the drug is explicitly exempt by law (e.g., nitroglycerin).</p>
+                </li>
+                <li>
+                    <h3>Omnibus Budget Reconciliation Act (OBRA '90)</h3>
+                    <p><strong>Summary:</strong> OBRA '90 mandated that pharmacists offer to counsel Medicaid patients about their prescriptions. While primarily for pharmacists, technicians often play a role in facilitating this process and understanding its importance in patient care.</p>
+                </li>
+                <li>
+                    <h3>State Boards of Pharmacy Regulations</h3>
+                    <p><strong>Summary:</strong> Each state has its own Board of Pharmacy that governs the practice of pharmacy within that state. These boards regulate pharmacist and technician licensure, continuing education requirements, ratios of technicians to pharmacists, and the specific scope of practice for technicians. Technicians must always be aware of and adhere to their specific state's regulations, as they can vary significantly from federal laws and other states.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="roles">
+            <h2>Technician Roles & Responsibilities</h2>
+            <p>Pharmacy technicians are integral members of the healthcare team. Their roles can vary slightly depending on the setting, but generally include a core set of responsibilities:</p>
+            <ul>
+                <li><strong>Dispensing Medications:</strong> Assisting pharmacists in preparing and labeling prescription medications, including counting, pouring, mixing, and measuring.</li>
+                <li><strong>Compounding:</strong> Preparing customized medications for patients, which can involve non-sterile compounding (e.g., creams, oral solutions) or sterile compounding (e.g., IV admixtures).</li>
+                <li><strong>Inventory Management:</strong> Ordering, receiving, stocking, and organizing medications and supplies, as well as managing expired or recalled products.</li>
+                <li><strong>Patient Information Management:</strong> Collecting and updating patient demographics, insurance information, and medication histories.</li>
+                <li><strong>Insurance Processing:</strong> Assisting patients with billing and insurance claims, resolving rejections, and understanding co-pays and deductibles.</li>
+                <li><strong>Communication:</strong> Interacting with patients (under pharmacist supervision), answering phones, and communicating with healthcare providers and insurance companies.</li>
+                <li><strong>Automated Dispensing Systems:</strong> Loading and maintaining medications in automated dispensing cabinets (e.g., Pyxis, Omnicell) in hospital settings.</li>
+                <li><strong>Maintaining Records:</strong> Accurately documenting all dispensing activities, controlled substance logs, and patient profiles.</li>
+                <li><strong>Compliance:</strong> Adhering to all federal and state laws, regulations, and pharmacy policies, including HIPAA for patient privacy.</li>
+            </ul>
+        </section>
+
+        <section id="flashcards" style="display:none;">
+            <h2>Flashcards (Coming Soon!)</h2>
+            <p>This section will feature interactive flashcards to help you memorize key drug names, classifications, and abbreviations. Stay tuned for this study tool!</p>
+        </section>
+
+        <section id="quizzes" style="display:none;">
+            <h2>Quizzes (Coming Soon!)</h2>
+            <p>Test your knowledge with interactive quizzes on various pharmacy topics. Challenge yourself and track your progress!</p>
+        </section>
+
+        <section id="pharmacology" style="display:none;">
+            <h2>Pharmacology Basics (Coming Soon!)</h2>
+            <p>Dive deeper into how drugs work in the body with simplified explanations of core pharmacology concepts like absorption, distribution, metabolism, excretion, and drug interactions.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Pharmacy Technician Training Hub. All rights reserved. <br>Disclaimer: This website is for educational purposes only and not a substitute for professional advice.</p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle solution visibility
+        function toggleSolution(button) {
+            const solutionText = button.nextElementSibling;
+            if (solutionText.style.display === "none" || solutionText.style.display === "") {
+                solutionText.style.display = "block";
+                button.textContent = "Hide Solution";
+            } else {
+                solutionText.style.display = "none";
+                button.textContent = "Show Solution";
+            }
+        }
+    </script>
+</body>
+</html>
 

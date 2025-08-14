@@ -211,6 +211,163 @@
             border-radius: 4px;
         }
 
+        /* Matching Game Specific Styling */
+        .matching-game-category-buttons {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .matching-game-category-buttons button {
+            background-color: #3498db; /* Blue */
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .matching-game-category-buttons button:hover {
+            background-color: #2980b9; /* Darker blue */
+            transform: translateY(-2px);
+        }
+        .matching-game-category-buttons button.active {
+            background-color: #1abc9c; /* Turquoise */
+        }
+
+        .matching-game-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #e8f3f8; /* Light blue-gray */
+            border-radius: 10px;
+            min-height: 200px; /* Ensure visibility */
+        }
+
+        .matching-card {
+            background-color: #ffffff;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 80px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+            user-select: none; /* Prevent text selection */
+        }
+
+        .matching-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .matching-card.flipped {
+            background-color: #cceeff; /* Lighter blue when flipped */
+            border-color: #2980b9;
+        }
+
+        .matching-card.matched {
+            background-color: #d4edda; /* Green when matched */
+            border-color: #28a745;
+            cursor: default;
+            pointer-events: none; /* Disable clicks on matched cards */
+        }
+
+        .matching-card.incorrect {
+            background-color: #f8d7da; /* Red when incorrect */
+            border-color: #dc3545;
+        }
+
+        #matching-game-feedback {
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 1rem;
+            color: #2c3e50;
+        }
+        #matching-game-feedback.win {
+            color: #28a745;
+            font-weight: bold;
+        }
+        #reset-matching-game {
+            background-color: #e74c3c; /* Red */
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 1.5rem;
+            display: block; /* Make it a block element to center it easily */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #reset-matching-game:hover {
+            background-color: #c0392b; /* Darker red */
+            transform: translateY(-2px);
+        }
+
+        /* Calculator Specific Styling */
+        .calculator-section {
+            background-color: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .calculator-section label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .calculator-section input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .calculator-section button {
+            background-color: #3498db; /* Blue */
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1em;
+            display: block;
+            width: 100%;
+        }
+
+        .calculator-section button:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        #days-supply-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #d4edda; /* Light green for results */
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            color: #28a745;
+            display: none; /* Hidden until calculated */
+        }
 
         /* Footer Styling */
         footer {
@@ -299,7 +456,8 @@
         <a href="#terminology">Terminology</a>
         <a href="#laws">Laws & Regulations</a>
         <a href="#roles">Roles & Responsibilities</a>
-        <a href="#quizzes">Quizzes</a> <!-- Added link to Quizzes -->
+        <a href="#quizzes">Quizzes</a>
+        <a href="#matching-game">Matching Game</a>
     </nav>
 
     <div class="container">
@@ -577,7 +735,7 @@
             <h2>Drug Calculations</h2>
             <p>Mastering pharmacy calculations is crucial for accuracy and patient safety. Practice these common types of problems:</p>
 
-            <h3>1. Days' Supply</h3>
+            <h3>1. Days' Supply Practice Problems</h3>
             <ul>
                 <li>
                     <strong>Problem:</strong> A patient's prescription is for **Insulin Glargine (Lantus)** 100 units/mL. They are instructed to inject 20 units subcutaneously every day. The vial size is 10 mL. What is the days' supply?
@@ -675,6 +833,20 @@
                     </div>
                 </li>
             </ul>
+            
+            <div class="calculator-section">
+                <h3>Days' Supply Calculator</h3>
+                <p>Calculate the days' supply for a prescription based on total quantity and daily dose.</p>
+                <label for="totalQuantity">Total Quantity Dispensed:</label>
+                <input type="number" id="totalQuantity" placeholder="e.g., 30 tablets or 100 mL" step="any">
+
+                <label for="dailyDose">Dose Per Day:</label>
+                <input type="number" id="dailyDose" placeholder="e.g., 1 tablet or 5 mL" step="any">
+
+                <button onclick="calculateDaysSupply()">Calculate Days' Supply</button>
+                <div id="days-supply-result"></div>
+            </div>
+
             <h3>Additional Resources:</h3>
             <ul>
                 <li><a href="https://www.youtube.com/watch?v=VdzIFSE-jfQ" target="_blank" class="youtube-player">Pharmacy Math Calculations: Full Series (Video)</a></li>
@@ -821,6 +993,21 @@
             <div id="quiz-results"></div>
         </section>
 
+        <section id="matching-game">
+            <h2>Matching Game</h2>
+            <p>Match the pairs to test your knowledge!</p>
+            <div class="matching-game-category-buttons">
+                <button onclick="loadMatchingGame('medications')" id="meds-btn">Medications</button>
+                <button onclick="loadMatchingGame('sigcodes')" id="sig-btn">Sig Codes</button>
+                <button onclick="loadMatchingGame('terminology-match')" id="term-btn">Terminology</button>
+            </div>
+            <div id="matching-game-board" class="matching-game-board">
+                <!-- Matching cards will be loaded here -->
+            </div>
+            <div id="matching-game-feedback"></div>
+            <button id="reset-matching-game" style="display:none;" onclick="resetMatchingGame()">Reset Game</button>
+        </section>
+
         <section id="flashcards" style="display:none;">
             <h2>Flashcards (Coming Soon!)</h2>
             <p>This section will feature interactive flashcards to help you memorize key drug names, classifications, and abbreviations. Stay tuned for this study tool!</p>
@@ -964,6 +1151,196 @@
 
         // Load quiz when the page loads
         document.addEventListener('DOMContentLoaded', loadQuiz);
+
+        // --- Matching Game Logic ---
+        const matchingGameData = {
+            medications: [
+                { id: 'lipitor', text: 'Lipitor', match: 'atorvastatin' },
+                { id: 'atorvastatin', text: 'Atorvastatin', match: 'lipitor' },
+                { id: 'prinivil', text: 'Prinivil', match: 'lisinopril' },
+                { id: 'lisinopril', text: 'Lisinopril', match: 'prinivil' },
+                { id: 'norvasc', text: 'Norvasc', match: 'amlodipine' },
+                { id: 'amlodipine', text: 'Amlodipine', match: 'norvasc' },
+                { id: 'zithromax', text: 'Zithromax', match: 'azithromycin' },
+                { id: 'azithromycin', text: 'Azithromycin', match: 'zithromax' },
+                { id: 'synthroid', text: 'Synthroid', match: 'levothyroxine' },
+                { id: 'levothyroxine', text: 'Levothyroxine', match: 'synthroid' },
+            ],
+            sigcodes: [
+                { id: 'bid', text: 'BID', match: 'twice daily' },
+                { id: 'twice daily', text: 'Twice daily', match: 'bid' },
+                { id: 'tid', text: 'TID', match: 'three times daily' },
+                { id: 'three times daily', text: 'Three times daily', match: 'tid' },
+                { id: 'po', text: 'PO', match: 'by mouth' },
+                { id: 'by mouth', text: 'By mouth', match: 'po' },
+                { id: 'prn', text: 'PRN', match: 'as needed' },
+                { id: 'as needed', text: 'As needed', match: 'prn' },
+                { id: 'hs', text: 'HS', match: 'at bedtime' },
+                { id: 'at bedtime', text: 'At bedtime', match: 'hs' },
+            ],
+            terminology_match: [ // Renamed to avoid conflict with 'terminology' section ID
+                { id: 'pharmacology', text: 'Pharmacology', match: 'study of drugs' },
+                { id: 'study of drugs', text: 'Study of drugs', match: 'pharmacology' },
+                { id: 'analgesic', text: 'Analgesic', match: 'pain reliever' },
+                { id: 'pain reliever', text: 'Pain reliever', match: 'analgesic' },
+                { id: 'antipyretic', text: 'Antipyretic', match: 'fever reducer' },
+                { id: 'fever reducer', text: 'Fever reducer', match: 'antipyretic' },
+                { id: 'hypo', text: 'Hypo-', match: 'deficient' },
+                { id: 'deficient', text: 'Deficient', match: 'hypo' },
+                { id: 'itis', text: '-itis', match: 'inflammation of' },
+                { id: 'inflammation of', text: 'Inflammation of', match: 'itis' },
+            ]
+        };
+
+        const matchingGameBoard = document.getElementById('matching-game-board');
+        const matchingGameFeedback = document.getElementById('matching-game-feedback');
+        const resetButton = document.getElementById('reset-matching-game');
+
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let currentCategory = ''; // To keep track of the active category
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function createCard(item, category) {
+            const card = document.createElement('div');
+            card.classList.add('matching-card');
+            card.textContent = item.text;
+            card.dataset.id = item.id;
+            card.dataset.match = item.match;
+            card.dataset.category = category;
+            card.addEventListener('click', handleCardClick);
+            return card;
+        }
+
+        function loadMatchingGame(category) {
+            currentCategory = category;
+            matchingGameBoard.innerHTML = ''; // Clear previous board
+            matchingGameFeedback.textContent = '';
+            resetButton.style.display = 'none';
+
+            // Deactivate all category buttons and activate the clicked one
+            document.querySelectorAll('.matching-game-category-buttons button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(category.replace('_match', '') + '-btn').classList.add('active');
+
+
+            const data = matchingGameData[category];
+            if (!data) return;
+
+            // Ensure we have an even number of cards, taking a subset if needed
+            let subsetData = [...data];
+            // Take 10 pairs (20 cards) for a manageable game
+            if (subsetData.length > 20) {
+                shuffleArray(subsetData);
+                subsetData = subsetData.slice(0, 20); // Get first 20 items (10 pairs)
+            }
+
+
+            // Shuffle the cards
+            shuffleArray(subsetData);
+
+            subsetData.forEach(item => {
+                matchingGameBoard.appendChild(createCard(item, category));
+            });
+
+            flippedCards = [];
+            matchedPairs = 0;
+        }
+
+        function handleCardClick(event) {
+            const clickedCard = event.target;
+
+            // Ignore clicks if already matched, already flipped, or more than 2 cards are open
+            if (clickedCard.classList.contains('matched') || clickedCard.classList.contains('flipped') || flippedCards.length === 2) {
+                return;
+            }
+
+            clickedCard.classList.add('flipped');
+            flippedCards.push(clickedCard);
+
+            if (flippedCards.length === 2) {
+                const [card1, card2] = flippedCards;
+
+                // Check if they are from the same category and are a match
+                if (card1.dataset.category === card2.dataset.category &&
+                    card1.dataset.id === card2.dataset.match &&
+                    card2.dataset.id === card1.dataset.match) {
+                    // It's a match!
+                    card1.classList.add('matched');
+                    card2.classList.add('matched');
+                    card1.classList.remove('flipped'); // Remove flipped class once matched
+                    card2.classList.remove('flipped');
+                    matchingGameFeedback.textContent = 'Match found!';
+                    matchedPairs++;
+
+                    if (matchedPairs * 2 === matchingGameBoard.children.length) {
+                        matchingGameFeedback.textContent = 'Congratulations! You matched all pairs!';
+                        matchingGameFeedback.classList.add('win');
+                        resetButton.style.display = 'block';
+                    }
+                    flippedCards = []; // Reset for next turn
+                } else {
+                    // Not a match
+                    matchingGameFeedback.textContent = 'No match. Try again!';
+                    // Temporarily highlight as incorrect, then flip back
+                    card1.classList.add('incorrect');
+                    card2.classList.add('incorrect');
+
+                    setTimeout(() => {
+                        card1.classList.remove('flipped', 'incorrect');
+                        card2.classList.remove('flipped', 'incorrect');
+                        flippedCards = []; // Reset for next turn
+                        matchingGameFeedback.textContent = ''; // Clear feedback
+                    }, 1000);
+                }
+            }
+        }
+
+        function resetMatchingGame() {
+            loadMatchingGame(currentCategory); // Reload the current category
+            matchingGameFeedback.classList.remove('win');
+        }
+
+        // --- Days' Supply Calculator Logic ---
+        function calculateDaysSupply() {
+            const totalQuantityInput = document.getElementById('totalQuantity');
+            const dailyDoseInput = document.getElementById('dailyDose');
+            const resultDiv = document.getElementById('days-supply-result');
+
+            const totalQuantity = parseFloat(totalQuantityInput.value);
+            const dailyDose = parseFloat(dailyDoseInput.value);
+
+            // Basic validation
+            if (isNaN(totalQuantity) || isNaN(dailyDose) || totalQuantity <= 0 || dailyDose <= 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.style.backgroundColor = '#f8d7da'; // light red for error
+                resultDiv.style.borderColor = '#dc3545'; // red border
+                resultDiv.style.color = '#dc3545'; // red text
+                resultDiv.textContent = 'Please enter valid positive numbers for both fields.';
+                return;
+            }
+
+            const daysSupply = totalQuantity / dailyDose;
+
+            resultDiv.style.display = 'block';
+            resultDiv.style.backgroundColor = '#d4edda'; // light green for success
+            resultDiv.style.borderColor = '#28a745'; // green border
+            resultDiv.style.color = '#28a745'; // green text
+            resultDiv.textContent = `Days' Supply: ${daysSupply.toFixed(2)} days`; // Display with 2 decimal places
+        }
+
+        // Load quiz and medications game by default when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadQuiz();
+            loadMatchingGame('medications');
+        });
     </script>
 </body>
 </html>

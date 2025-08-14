@@ -197,7 +197,7 @@
 
         .correct-answer {
             background-color: #d4edda; /* Light green */
-            border-left: 4px solid #28a745; /* Green border */
+            border-left: 44px solid #28a745; /* Green border */
             padding: 0.5rem;
             margin-top: 0.5rem;
             border-radius: 4px;
@@ -467,8 +467,8 @@
             <p>A Pharmacy Technician plays a vital role in healthcare, working closely with pharmacists to ensure patients receive the correct medications safely and efficiently. Your responsibilities can range from preparing prescriptions and managing inventory to assisting with insurance and patient interactions. This platform aims to support your learning journey and help you stay current in this dynamic field.</p>
             <h3>Additional Resources:</h3>
             <ul>
-                <li><a href="https://www.youtube.com/watch?v=wAty_5-c_eQ" target="_blank" class="youtube-player">What Does a Pharmacy Technician Do? (Video)</a></li>
-                <li><a href="https://www.youtube.com/watch?v=qQJ0b16xL-8" target="_blank" class="youtube-player">A Day in the Life of a Pharmacy Technician (Video)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=R2rX6S8Wn0s" target="_blank" class="youtube-player">What Does a Pharmacy Technician Do? (Video)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=3-b_t-l7pG4" target="_blank" class="youtube-player">A Day in the Life of a Pharmacy Technician (Video)</a></li>
             </ul>
         </section>
 
@@ -1056,7 +1056,7 @@
             </ul>
             <h3>Additional Resources:</h3>
             <ul>
-                <li><a href="https://www.youtube.com/watch?v=6J_G4_n2Xh4" target="_blank" class="youtube-player">Pharmacy Technician: Career Overview (Video)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=eLwL-KjJk8U" target="_blank" class="youtube-player">Pharmacy Technician: Career Overview (Video)</a></li>
             </ul>
         </section>
 
@@ -1074,9 +1074,9 @@
             <h2>Matching Game</h2>
             <p>Match the pairs to test your knowledge!</p>
             <div class="matching-game-category-buttons">
-                <button onclick="loadMatchingGame('medications')" id="meds-btn">Medications</button>
-                <button onclick="loadMatchingGame('sigcodes')" id="sig-btn">Sig Codes</button>
-                <button onclick="loadMatchingGame('terminology-match')" id="term-btn">Terminology</button>
+                <button onclick="loadMatchingGame('medications')" id="medications-btn">Medications</button>
+                <button onclick="loadMatchingGame('sigcodes')" id="sigcodes-btn">Sig Codes</button>
+                <button onclick="loadMatchingGame('terminology_match')" id="terminology_match-btn">Terminology</button>
             </div>
             <div id="matching-game-board" class="matching-game-board">
                 <!-- Matching cards will be loaded here -->
@@ -1305,7 +1305,8 @@
             document.querySelectorAll('.matching-game-category-buttons button').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.getElementById(category.replace('_match', '') + '-btn').classList.add('active');
+            // Fixed button ID selection
+            document.getElementById(category + '-btn').classList.add('active');
 
 
             const data = matchingGameData[category];

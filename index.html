@@ -831,12 +831,13 @@
                     </div>
                 </li>
                 <li>
-                    <strong>Problem:</strong> A patient is prescribed **Amoxicillin 250mg capsules**. The instructions are to take 1 capsule three times a day (TID). A total of 30 capsules are dispensed. What is the days' supply?
+                    <strong>Problem:</strong> A patient is prescribed **Amoxicillin 250mg capsules** for 14 days. The instructions are to take 1 capsule three times a day (TID). How many capsules should be dispensed?
                     <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
                     <div class="solution-text">
                         <strong>Solution:</strong><br>
-                        Daily dose = 1 capsule/dose &times; 3 doses/day = 3 capsules/day.<br>
-                        Days' supply = 30 capsules / 3 capsules/day = <strong>10 days</strong>.
+                        Doses per day = 3 doses/day<br>
+                        Total doses = 3 doses/day &times; 14 days = 42 capsules.<br>
+                        Total quantity to dispense = <strong>42 capsules</strong>.
                     </div>
                 </li>
                 <li>
@@ -869,6 +870,14 @@
                         (50 lbs / 150 lbs) &times; 200 mg = 0.333... &times; 200 mg &approx; <strong>66.67 mg</strong>.
                     </div>
                 </li>
+                <li>
+                    <strong>Problem:</strong> A 30-lb child needs a medication. The adult dose is 150 mg. Using Clark's Rule, what is the pediatric dose?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        (30 lbs / 150 lbs) &times; 150 mg = 0.2 &times; 150 mg = <strong>30 mg</strong>.
+                    </div>
+                </li>
             </ul>
 
             <h3>3. Young's Rule (Pediatric Dosage by Age)</h3>
@@ -888,6 +897,14 @@
                     <div class="solution-text">
                         <strong>Solution:</strong><br>
                         (4 / (4 + 12)) &times; 50 mg = (4 / 16) &times; 50 mg = 0.25 &times; 50 mg = <strong>12.5 mg</strong>.
+                    </div>
+                </li>
+                <li>
+                    <strong>Problem:</strong> An 8-year-old child needs an adult dose of 100 mg. Calculate the pediatric dose using Young's Rule.
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        (8 / (8 + 12)) &times; 100 mg = (8 / 20) &times; 100 mg = 0.4 &times; 100 mg = <strong>40 mg</strong>.
                     </div>
                 </li>
             </ul>
@@ -923,6 +940,21 @@
                         Amount of 5% solution: (40 / 65) &times; 100 mL &approx; <strong>61.54 mL</strong>
                     </div>
                 </li>
+                <li>
+                    <strong>Problem:</strong> How much 95% alcohol and 45% alcohol are needed to prepare 500 mL of 60% alcohol solution?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        Desired concentration = 60%<br>
+                        Higher concentration = 95%<br>
+                        Lower concentration = 45%<br><br>
+                        Parts of 95% solution = 60 - 45 = 15 parts<br>
+                        Parts of 45% solution = 95 - 60 = 35 parts<br>
+                        Total parts = 15 + 35 = 50 parts<br><br>
+                        Amount of 95% solution: (15 / 50) &times; 500 mL = <strong>150 mL</strong><br>
+                        Amount of 45% solution: (35 / 50) &times; 500 mL = <strong>350 mL</strong>
+                    </div>
+                </li>
             </ul>
 
             <h3>5. Flow Rate (IV Administration)</h3>
@@ -946,6 +978,15 @@
                         Drop factor = 20 gtts/mL<br><br>
                         Flow rate (gtts/min) = (Volume in mL &times; Drop factor) / Time in minutes<br>
                         Flow rate = (500 mL &times; 20 gtts/mL) / 240 minutes = 10000 / 240 &approx; <strong>41.67 gtts/min</strong>.
+                    </div>
+                </li>
+                <li>
+                    <strong>Problem:</strong> A 250 mL IV is to infuse over 30 minutes. What is the flow rate in mL/hr?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        Time in hours = 30 minutes / 60 minutes/hour = 0.5 hours<br>
+                        Flow rate = 250 mL / 0.5 hours = <strong>500 mL/hr</strong>.
                     </div>
                 </li>
             </ul>
@@ -976,6 +1017,20 @@
                         V1 = 1250 / 20 = <strong>62.5 mL</strong>.
                     </div>
                 </li>
+                <li>
+                    <strong>Problem:</strong> You need to prepare 1 liter of a 0.9% Sodium Chloride (normal saline) solution from a 10% Sodium Chloride stock solution. How much of the 10% stock solution is needed?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        Convert 1 liter to mL: 1 L = 1000 mL<br>
+                        C1 = 10%, V1 = ?<br>
+                        C2 = 0.9%, V2 = 1000 mL<br><br>
+                        C1V1 = C2V2<br>
+                        (10%) &times; V1 = (0.9%) &times; 1000 mL<br>
+                        10 &times; V1 = 900<br>
+                        V1 = 900 / 10 = <strong>90 mL</strong>.
+                    </div>
+                </li>
             </ul>
 
             <h3>7. Business Math (Profit)</h3>
@@ -996,6 +1051,16 @@
                         <strong>Solution:</strong><br>
                         Gross Profit = Reimbursement - Cost<br>
                         Gross Profit = $32.00 - $25.00 = <strong>$7.00</strong>.
+                    </div>
+                </li>
+                <li>
+                    <strong>Problem:</strong> A pharmacy purchases 100 tablets of a drug for $50.00. They sell each tablet for $1.50. What is the total profit if all tablets are sold?
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Solution</button>
+                    <div class="solution-text">
+                        <strong>Solution:</strong><br>
+                        Total Revenue = 100 tablets &times; $1.50/tablet = $150.00<br>
+                        Total Cost = $50.00<br>
+                        Profit = Total Revenue - Total Cost = $150.00 - $50.00 = <strong>$100.00</strong>.
                     </div>
                 </li>
             </ul>
@@ -1208,7 +1273,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Pharmacy Technician Training Hub. All rights reserved. <br>Disclaimer: This website is for educational purposes only and not a substitute for professional advice.</p>
+        <p>&copy; 2025, Chandra M Harris. All rights reserved. <br>Disclaimer: This website is for educational purposes only and not a substitute for professional advice.</p>
     </footer>
 
     <script>
@@ -2107,7 +2172,7 @@
                     flippedCards = []; // Reset for next turn
                 } else {
                     // Not a match
-                    matchingGameFeedback.textContent = 'No match. Try again! 🤔';
+                    matchingGameFeedback.textContent = 'No match. Try again! �';
                     // Temporarily highlight as incorrect, then flip back
                     card1.classList.add('incorrect');
                     card2.classList.add('incorrect');
@@ -2163,3 +2228,4 @@
     </script>
 </body>
 </html>
+�

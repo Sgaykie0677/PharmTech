@@ -369,6 +369,109 @@
             display: none; /* Hidden until calculated */
         }
 
+        /* Flashcards Styling */
+        .flashcard-controls {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .flashcard-controls button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .flashcard-controls button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        #flashcard-display {
+            width: 100%;
+            height: 200px;
+            background-color: #fff;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
+            cursor: pointer;
+            perspective: 1000px; /* For 3D flip effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        #flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        #flashcard-display.flipped #flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .flashcard-front {
+            background-color: #e8f3f8; /* Light blue-gray */
+            color: #2c3e50;
+        }
+
+        .flashcard-back {
+            background-color: #d4edda; /* Light green */
+            color: #2c3e50;
+            transform: rotateY(180deg);
+        }
+
+
+        /* Prescription Practice Styling */
+        .prescription-example {
+            background-color: #f0f8ff;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid #cceeff;
+        }
+        .prescription-example pre {
+            background-color: #e0e8f0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-family: monospace;
+            white-space: pre-wrap; /* Ensures wrapping for long lines */
+            word-wrap: break-word; /* Breaks long words */
+            font-size: 0.9em;
+            border: 1px solid #c0d8e8;
+            margin-top: 0.5rem;
+        }
+        .prescription-breakdown {
+            display: none;
+            background-color: #e8f6f3;
+            padding: 0.8rem;
+            border-left: 4px solid #1abc9c;
+            margin-top: 0.5rem;
+            border-radius: 6px;
+        }
+
         /* Footer Styling */
         footer {
             text-align: center;
@@ -458,6 +561,10 @@
         <a href="#roles">Roles & Responsibilities</a>
         <a href="#quizzes">Quizzes</a>
         <a href="#matching-game">Matching Game</a>
+        <a href="#flashcards">Flashcards</a>
+        <a href="#pharmacology">Pharmacology</a>
+        <a href="#prescription-practice">Prescription Practice</a>
+        <a href="#dosage-forms">Dosage Forms & Routes</a>
     </nav>
 
     <div class="container">
@@ -1261,15 +1368,282 @@
             <button id="reset-matching-game" style="display:none;" onclick="resetMatchingGame()">Reset Game</button>
         </section>
 
-        <section id="flashcards" style="display:none;">
-            <h2>Flashcards (Coming Soon!)</h2>
-            <p>This section will feature interactive flashcards to help you memorize key drug names, classifications, and abbreviations. Stay tuned for this study tool!</p>
+        <section id="flashcards">
+            <h2>Flashcards</h2>
+            <p>Test your recall with these interactive flashcards. Click the card to flip, or "Next Card" for a new one!</p>
+            <div class="flashcard-controls">
+                <button onclick="loadFlashcard()">Next Card</button>
+                <button onclick="flipCard()">Flip Card</button>
+            </div>
+            <div id="flashcard-display">
+                <div id="flashcard-inner">
+                    <div class="flashcard-face flashcard-front" id="flashcard-front"></div>
+                    <div class="flashcard-face flashcard-back" id="flashcard-back"></div>
+                </div>
+            </div>
         </section>
 
-        <section id="pharmacology" style="display:none;">
-            <h2>Pharmacology Basics (Coming Soon!)</h2>
-            <p>Dive deeper into how drugs work in the body with simplified explanations of core pharmacology concepts like absorption, distribution, metabolism, excretion, and drug interactions.</p>
+        <section id="pharmacology">
+            <h2>Pharmacology Basics</h2>
+            <p>Understanding how drugs interact with the body is fundamental. Here are some core concepts:</p>
+
+            <h3>Pharmacokinetics: ADME</h3>
+            <p>Pharmacokinetics describes how the body affects a drug. It involves four main processes:</p>
+            <ul>
+                <li>
+                    <strong>Absorption:</strong> How the drug moves from its administration site into the bloodstream. Factors like route of administration, drug formulation, and patient's physiological state influence this.
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Example</button>
+                    <div class="solution-text">
+                        <strong>Example:</strong> An oral tablet (like Ibuprofen) must dissolve in the stomach/intestines and be absorbed into the blood. An IV injection (like Insulin administered intravenously) is absorbed almost immediately because it bypasses the gastrointestinal tract.
+                    </div>
+                </li>
+                <li>
+                    <strong>Distribution:</strong> How the drug spreads from the bloodstream to various tissues and organs. This depends on blood flow, tissue binding, and how easily the drug can cross biological barriers (e.g., blood-brain barrier).
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Example</button>
+                    <div class="solution-text">
+                        <strong>Example:</strong> A highly protein-bound drug (like Warfarin) has less "free" drug available to act on tissues, as much of it is temporarily bound to plasma proteins.
+                    </div>
+                </li>
+                <li>
+                    <strong>Metabolism (Biotransformation):</strong> The process by which the body chemically alters drugs, typically in the liver, to make them easier to excrete. This often involves enzymes, particularly the cytochrome P450 (CYP450) system.
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Example</button>
+                    <div class="solution-text">
+                        <strong>Example:</strong> Many drugs are metabolized by liver enzymes. If a patient is taking two drugs that both use the same enzyme (e.g., statins and certain antifungals), one drug's levels might increase because the enzyme is "busy" with the other, leading to increased side effects.
+                    </div>
+                </li>
+                <li>
+                    <strong>Excretion:</strong> The removal of the drug and its metabolites from the body, primarily through the kidneys (urine) or liver (bile/feces).
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Example</button>
+                    <div class="solution-text">
+                        <strong>Example:</strong> Patients with kidney impairment might need lower doses of renally excreted drugs (like many antibiotics) to prevent accumulation and toxicity.
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Mechanism of Action (MOA) for Common Drug Classes</h3>
+            <p>Mechanism of Action describes *how* a drug produces its effect in the body. Understanding MOA helps in predicting therapeutic effects and side effects.</p>
+            <ul>
+                <li>
+                    <strong>Statins (e.g., Atorvastatin, Simvastatin):</strong>
+                    <p><strong>MOA:</strong> Inhibit HMG-CoA reductase, an enzyme crucial for cholesterol synthesis in the liver. This leads to decreased cholesterol production and increased LDL receptor activity, which removes more LDL ("bad") cholesterol from the blood.</p>
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Indication</button>
+                    <div class="solution-text">
+                        <strong>Indication:</strong> Hyperlipidemia (high cholesterol) to reduce the risk of cardiovascular events.
+                    </div>
+                </li>
+                <li>
+                    <strong>ACE Inhibitors (e.g., Lisinopril, Enalapril):</strong>
+                    <p><strong>MOA:</strong> Block the enzyme Angiotensin-Converting Enzyme (ACE), preventing the conversion of Angiotensin I to Angiotensin II. Angiotensin II is a potent vasoconstrictor and stimulates aldosterone release. By blocking its formation, ACE inhibitors cause vasodilation (widening of blood vessels) and reduce sodium/water retention, lowering blood pressure.</p>
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Indication</button>
+                    <div class="solution-text">
+                        <strong>Indication:</strong> Hypertension (high blood pressure), heart failure, and post-myocardial infarction.
+                    </div>
+                </li>
+                <li>
+                    <strong>Beta-Blockers (e.g., Metoprolol, Carvedilol):</strong>
+                    <p><strong>MOA:</strong> Block beta-adrenergic receptors in the heart and blood vessels. This reduces heart rate, contractility, and blood vessel constriction, leading to lower blood pressure and reduced workload on the heart.</p>
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Indication</button>
+                    <div class="solution-text">
+                        <strong>Indication:</strong> Hypertension, angina (chest pain), heart failure, arrhythmias, and anxiety.
+                    </div>
+                </li>
+                <li>
+                    <strong>SSRI Antidepressants (e.g., Sertraline, Escitalopram):</strong>
+                    <p><strong>MOA:</strong> Selectively inhibit the reuptake of serotonin in the brain, increasing the amount of serotonin available in the synaptic cleft. Serotonin is a neurotransmitter involved in mood regulation, sleep, and appetite.</p>
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Indication</button>
+                    <div class="solution-text">
+                        <strong>Indication:</strong> Depression, anxiety disorders, obsessive-compulsive disorder (OCD), and panic disorder.
+                    </div>
+                </li>
+                <li>
+                    <strong>Antibiotics (General):</strong>
+                    <p><strong>MOA:</strong> Vary widely depending on the class, but generally work by:
+                        <ul>
+                            <li>Inhibiting bacterial cell wall synthesis (e.g., Penicillins, Cephalosporins).</li>
+                            <li>Inhibiting bacterial protein synthesis (e.g., Macrolides, Tetracyclines).</li>
+                            <li>Inhibiting bacterial DNA replication or repair (e.g., Fluoroquinolones).</li>
+                            <li>Disrupting bacterial cell membrane (e.g., Polymyxins).</li>
+                        </ul>
+                    </p>
+                    <button class="solution-button" onclick="toggleSolution(this)">Show Indication</button>
+                    <div class="solution-text">
+                        <strong>Indication:</strong> Bacterial infections. Specific bacteria are susceptible to specific antibiotic classes.
+                    </div>
+                </li>
+            </ul>
         </section>
+
+        <section id="prescription-practice">
+            <h2>Prescription Interpretation Practice</h2>
+            <p>Practice breaking down prescriptions into their key components. Try to identify the Drug, Strength, Dosage Form, Quantity, Route, Frequency/Directions (SIG), and Number of Refills.</p>
+
+            <h3>Example 1: Common Oral Prescription</h3>
+            <div class="prescription-example">
+                <p><strong>Rx:</strong></p>
+                <pre>
+Patient: Jane Doe
+DOB: 01/15/1980
+Rx: Atorvastatin 20mg Tablet
+Sig: 1 tab PO qHS
+Disp: #30
+Refills: 3
+Prescriber: Dr. Smith
+                </pre>
+                <button class="solution-button" onclick="toggleSolution(this)">Show Breakdown</button>
+                <div class="prescription-breakdown">
+                    <ul>
+                        <li><strong>Drug Name:</strong> Atorvastatin</li>
+                        <li><strong>Strength:</strong> 20mg</li>
+                        <li><strong>Dosage Form:</strong> Tablet</li>
+                        <li><strong>Quantity Dispensed:</strong> #30</li>
+                        <li><strong>Route:</strong> PO (By Mouth)</li>
+                        <li><strong>Frequency/Directions (Sig):</strong> qHS (every night at bedtime)</li>
+                        <li><strong>Refills:</strong> 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Example 2: Liquid Medication</h3>
+            <div class="prescription-example">
+                <p><strong>Rx:</strong></p>
+                <pre>
+Patient: John B.
+DOB: 05/20/2010
+Rx: Amoxicillin 250mg/5mL Suspension
+Sig: 5mL PO TID x 10 days
+Disp: 150mL
+Refills: 0
+Prescriber: Dr. Jones
+                </pre>
+                <button class="solution-button" onclick="toggleSolution(this)">Show Breakdown</button>
+                <div class="prescription-breakdown">
+                    <ul>
+                        <li><strong>Drug Name:</strong> Amoxicillin</li>
+                        <li><strong>Strength:</strong> 250mg/5mL</li>
+                        <li><strong>Dosage Form:</strong> Suspension</li>
+                        <li><strong>Quantity Dispensed:</strong> 150mL</li>
+                        <li><strong>Route:</strong> PO (By Mouth)</li>
+                        <li><strong>Frequency/Directions (Sig):</strong> TID (three times a day) for 10 days</li>
+                        <li><strong>Refills:</strong> 0</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Example 3: Topical Medication</h3>
+            <div class="prescription-example">
+                <p><strong>Rx:</strong></p>
+                <pre>
+Patient: Mary S.
+DOB: 09/01/1975
+Rx: Hydrocortisone 1% Cream
+Sig: Apply to affected area BID
+Disp: 30g
+Refills: 2
+Prescriber: Dr. Lee
+                </pre>
+                <button class="solution-button" onclick="toggleSolution(this)">Show Breakdown</button>
+                <div class="prescription-breakdown">
+                    <ul>
+                        <li><strong>Drug Name:</strong> Hydrocortisone</li>
+                        <li><strong>Strength:</strong> 1%</li>
+                        <li><strong>Dosage Form:</strong> Cream</li>
+                        <li><strong>Quantity Dispensed:</strong> 30g</li>
+                        <li><strong>Route:</strong> Topical (implied by 'Apply to affected area')</li>
+                        <li><strong>Frequency/Directions (Sig):</strong> BID (twice daily) to affected area</li>
+                        <li><strong>Refills:</strong> 2</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="dosage-forms">
+            <h2>Common Dosage Forms and Routes of Administration</h2>
+            <p>Medications come in various forms and can be administered through different routes. Understanding these is key to safe and effective dispensing.</p>
+
+            <h3>Dosage Forms</h3>
+            <ul>
+                <li>
+                    <strong>Tablet:</strong> Solid, compressed powder. Can be swallowed whole, chewed, or dissolved. (e.g., Lisinopril tablet, chewable Aspirin)
+                </li>
+                <li>
+                    <strong>Capsule:</strong> Medication enclosed in a soluble gelatin shell. (e.g., Amoxicillin capsule, Duloxetine capsule)
+                </li>
+                <li>
+                    <strong>Solution:</strong> A liquid preparation where the drug is completely dissolved in a solvent. Appears clear. (e.g., Oral solutions, IV solutions like Normal Saline)
+                </li>
+                <li>
+                    <strong>Suspension:</strong> A liquid preparation containing undissolved drug particles dispersed in a liquid vehicle. Requires shaking before use. (e.g., Amoxicillin suspension, many liquid antacids)
+                </li>
+                <li>
+                    <strong>Elixir:</strong> A clear, sweet, hydroalcoholic liquid used for oral administration. (e.g., Digoxin elixir)
+                </li>
+                <li>
+                    <strong>Syrup:</strong> A concentrated aqueous solution of sugar or a sugar substitute with a medication. (e.g., Cough syrups)
+                </li>
+                <li>
+                    <strong>Cream:</strong> A semi-solid emulsion of oil and water, often for topical application, less greasy than ointments. (e.g., Hydrocortisone cream)
+                </li>
+                <li>
+                    <strong>Ointment:</strong> A greasy, semi-solid preparation for topical application, providing a protective and occlusive layer. (e.g., Bacitracin ointment)
+                </li>
+                <li>
+                    <strong>Gel:</strong> A semi-solid system consisting of a liquid phase within a 3D polymeric matrix. (e.g., Diclofenac gel)
+                </li>
+                <li>
+                    <strong>Patch (Transdermal):</strong> A medicated adhesive patch placed on the skin to deliver a specific dose of medication through the skin and into the bloodstream. (e.g., Nicotine patch, Fentanyl patch)
+                </li>
+                <li>
+                    <strong>Suppository:</strong> A solid dosage form inserted into a body orifice (rectum, vagina, urethra) where it dissolves or melts to release medication. (e.g., Promethazine suppository)
+                </li>
+                <li>
+                    <strong>Inhaler (Aerosol/MDI/DPI):</strong> Devices that deliver medication directly to the lungs. (e.g., Albuterol inhaler)
+                </li>
+                <li>
+                    <strong>Injection (Vial/Ampule/Prefilled Syringe):</strong> Liquid medication administered via needle into a vein (IV), muscle (IM), or under the skin (SQ).
+                </li>
+            </ul>
+
+            <h3>Routes of Administration</h3>
+            <ul>
+                <li>
+                    <strong>Oral (PO - per os):</strong> Taken by mouth and swallowed. Most common and convenient.
+                </li>
+                <li>
+                    <strong>Topical:</strong> Applied to the skin surface for local effect. (e.g., creams, ointments)
+                </li>
+                <li>
+                    <strong>Transdermal:</strong> Applied to the skin for systemic absorption through the skin. (e.g., patches)
+                </li>
+                <li>
+                    <strong>Parenteral:</strong> Administration by injection, bypassing the gastrointestinal tract. Includes:
+                    <ul>
+                        <li><strong>Intravenous (IV):</strong> Into a vein. Fastest onset of action.</li>
+                        <li><strong>Intramuscular (IM):</strong> Into a muscle.</li>
+                        <li><strong>Subcutaneous (SQ/SC):</strong> Under the skin.</li>
+                        <li><strong>Intradermal (ID):</strong> Into the dermis layer of the skin.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Inhalation:</strong> Breathed into the lungs. (e.g., inhalers, nebulizers)
+                </li>
+                <li>
+                    <strong>Rectal:</strong> Inserted into the rectum. (e.g., suppositories, enemas)
+                </li>
+                <li>
+                    <strong>Vaginal:</strong> Inserted into the vagina. (e.g., creams, suppositories)
+                </li>
+                <li>
+                    <strong>Ophthalmic:</strong> Applied to the eye. (e.g., eye drops, eye ointments)
+                </li>
+                <li>
+                    <strong>Otic:</strong> Applied to the ear. (e.g., ear drops)
+                </li>
+                <li>
+                    <strong>Nasal:</strong> Administered through the nose. (e.g., nasal sprays)
+                </li>
+            </ul>
+        </section>
+
     </div>
 
     <footer>
@@ -1740,7 +2114,7 @@
                 { id: 'ventolin hfa', text: 'Ventolin HFA', match: 'albuterol' },
                 { id: 'albuterol', text: 'Albuterol', match: 'ventolin hfa' },
                 { id: 'proair hfa', text: 'ProAir HFA', match: 'albuterol' },
-                { id: 'flovent hfa', text: 'Flovent HFA', match: 'fluticasone' },
+                { id: 'flovent hfa', text: 'Fluticasone', match: 'fluticasone' },
                 { id: 'pulmicort flexhaler', text: 'Pulmicort Flexhaler', match: 'budesonide' },
                 { id: 'budesonide', text: 'Budesonide', match: 'pulmicort flexhaler' },
                 { id: 'qvar redihaler', text: 'Qvar RediHaler', match: 'beclomethasone' },
@@ -1882,7 +2256,8 @@
                 { id: 'motrin', text: 'Motrin', match: 'ibuprofen' },
                 { id: 'aleve', text: 'Aleve', match: 'naproxen' },
                 { id: 'mobic', text: 'Mobic', match: 'meloxicam' },
-                { id: 'celebrex', text: 'Celecoxib', match: 'celecoxib' },
+                { id: 'celebrex', text: 'Celebrex', match: 'celecoxib' },
+                { id: 'celecoxib', text: 'Celecoxib', match: 'celebrex' },
                 { id: 'voltaren gel', text: 'Voltaren Gel', match: 'diclofenac (topical)' },
                 { id: 'diclofenac (topical)', text: 'Diclofenac (topical)', match: 'voltaren gel' },
                 { id: 'tylenol #3', text: 'Tylenol #3', match: 'codeine/acetaminophen' },
@@ -2081,29 +2456,6 @@
                 return;
             }
 
-            // Create a shuffled list of pairs (each pair has two cards)
-            let availablePairs = [];
-            // Assuming data is structured as {id: 'x', text: 'X', match: 'y'} and {id: 'y', text: 'Y', match: 'x'}
-            // We need to ensure we're picking distinct pairs, not just random elements
-            const uniquePairs = new Map(); // Use a Map to store one of each pair
-            for (let i = 0; i < allData.length; i++) {
-                const item = allData[i];
-                if (!uniquePairs.has(item.id) && !uniquePairs.has(item.match)) {
-                     // Check if both item.id and item.match are not already added as a key or a value in the map
-                    // This is a simple heuristic; a more robust approach would explicitly group pairs.
-                    // A better way would be to create pairs first, then flatten and shuffle.
-                    const matchedItem = allData.find(d => d.id === item.match && d.match === item.id);
-                    if (matchedItem && !uniquePairs.has(item.id) && !uniquePairs.has(matchedItem.id)) {
-                        rawPairs.push([item, matchedItem]);
-                        processedIds.add(item.id);
-                        processedIds.add(matchedItem.id);
-                    }
-                }
-            }
-            
-            // Now, `availablePairs` contains actual pairs (two elements for each pair).
-            // We need to select `NUM_MATCHING_PAIRS` *distinct* pairs.
-            // Let's re-structure `allData` to be an array of actual pairs first to pick them more robustly.
             const rawPairs = [];
             const processedIds = new Set();
             for (const item of allData) {
@@ -2117,17 +2469,14 @@
                 }
             }
 
-            // Shuffle the raw pairs to get random ones
             shuffleArray(rawPairs);
 
-            // Select N pairs (N * 2 cards)
             const selectedPairs = rawPairs.slice(0, NUM_MATCHING_PAIRS);
             let cardsToDisplay = [];
             selectedPairs.forEach(pair => {
                 cardsToDisplay.push(pair[0], pair[1]);
             });
 
-            // Shuffle the selected cards for display
             shuffleArray(cardsToDisplay);
 
             cardsToDisplay.forEach(item => {
@@ -2172,7 +2521,7 @@
                     flippedCards = []; // Reset for next turn
                 } else {
                     // Not a match
-                    matchingGameFeedback.textContent = 'No match. Try again! �';
+                    matchingGameFeedback.textContent = 'No match. Try again! 🤔';
                     // Temporarily highlight as incorrect, then flip back
                     card1.classList.add('incorrect');
                     card2.classList.add('incorrect');
@@ -2190,6 +2539,136 @@
         function resetMatchingGame() {
             loadMatchingGame(currentCategory); // Reload the current category
             matchingGameFeedback.classList.remove('win');
+        }
+
+        // --- Flashcard Logic ---
+        const flashcardData = [
+            { front: "Generic Name for Zoloft", back: "Sertraline" },
+            { front: "Brand Name for Atorvastatin", back: "Lipitor" },
+            { front: "BID", back: "Twice a day" },
+            { front: "PRN", back: "As needed" },
+            { front: "Study of drugs and their effects", back: "Pharmacology" },
+            { front: "Inflammation of...", back: "-itis" },
+            { front: "Drug class of Metformin", back: "Biguanide" },
+            { front: "Primary use of Lisinopril", back: "Hypertension (high blood pressure)" },
+            { front: "Drug class of Alprazolam (Xanax)", back: "Benzodiazepine" },
+            { front: "Apply to affected area", back: "Topical application (e.g., creams, ointments)" },
+            { front: "MOA: Inhibits HMG-CoA reductase", back: "Statins (e.g., Atorvastatin)" },
+            { front: "Process of drug removal from body", back: "Excretion" },
+            { front: "Route: Into the vein", back: "Intravenous (IV)" },
+            { front: "Suffix for 'surgical removal'", back: "-ectomy" },
+            { front: "Brand name for Omeprazole", back: "Prilosec" },
+            { front: "Medical term for muscle pain", back: "Myalgia" },
+            { front: "Generic name for Zyvox", back: "Linezolid" },
+            { front: "Main use of Warfarin", back: "Prevents/treats blood clots" },
+            { front: "qHS", back: "Every night at bedtime" },
+            { front: "Meaning of NPO", back: "Nothing by mouth" },
+            { front: "Example of a Macrolide antibiotic", back: "Azithromycin (Zithromax)" },
+            { front: "Primary site of drug metabolism", back: "Liver" },
+            { front: "Type of container for most household meds (PPPA)", back: "Child-resistant container" },
+            { front: "Medical term prefix for 'heart'", back: "Cardio-" },
+            { front: "Generic name for Cymbalta", back: "Duloxetine" },
+            { front: "Drug class for Prednisone", back: "Corticosteroid" },
+            { front: "The 'D' in ADME", back: "Distribution" },
+            { front: "Federal agency enforcing CSA", back: "DEA (Drug Enforcement Administration)" },
+            { front: "q.i.d.", back: "Four times daily" },
+            { front: "Medication for gout (Allopurinol)", back: "Xanthine Oxidase Inhibitor" },
+            { front: "Example of a Thiazide Diuretic", back: "Hydrochlorothiazide" },
+            { front: "Brand name for Sildenafil", back: "Viagra" },
+            { front: "Generic name for Plavix", back: "Clopidogrel" },
+            { front: "Drug class of Tamsulosin (Flomax)", back: "Alpha-blocker" },
+            { front: "Indication for Gabapentin", back: "Seizures, neuropathic pain" },
+            { front: "Medical term prefix for 'liver'", back: "Hepato-" },
+            { front: "Routes: Oral, Topical, Parenteral, Inhalation", back: "Common Routes of Administration" },
+            { front: "Dosage Forms: Tablet, Capsule, Solution, Suspension", back: "Common Dosage Forms" },
+            { front: "Abbreviation for 'prescription'", back: "Rx" },
+            { front: "Abbreviation for 'dispense'", back: "Disp" },
+            { front: "Abbreviation for 'immediately'", back: "Stat" },
+            { front: "Abbreviation for 'Date of Birth'", back: "DOB" },
+            { front: "Act protecting patient health information", back: "HIPAA" },
+            { front: "Rule for pediatric dose by age", back: "Young's Rule" },
+            { front: "Rule for pediatric dose by weight", back: "Clark's Rule" },
+            { front: "Process of making a drug available for body use", back: "Bioavailability" },
+            { front: "Undesired or unexpected drug effect", back: "Adverse Reaction" },
+            { front: "Fixed amount paid by insured for service", back: "Co-payment (Co-pay)" },
+            { front: "Amount paid before insurance starts to pay", back: "Deductible" },
+            { front: "Generic name for Ambien", back: "Zolpidem" },
+            { front: "Drug class of Metoprolol", back: "Beta-blocker" },
+            { front: "Medication for asthma/COPD (Albuterol)", back: "Beta-2 Agonist" },
+            { front: "Common use for Cyclobenzaprine (Flexeril)", back: "Muscle spasms and pain" },
+            { front: "Antibiotic class of Cephalexin (Keflex)", back: "Cephalosporin antibiotic" },
+            { front: "Generic name for Cipro", back: "Ciprofloxacin" },
+            { front: "Generic name for Percocet", back: "Oxycodone/Acetaminophen" },
+            { front: "Indication for Montelukast", back: "Asthma, allergies" },
+            { front: "Term for disease of nerves", back: "Neuropathy" },
+            { front: "What does 'a.c.' stand for?", back: "Before meals" },
+            { front: "What does 'p.c.' stand for?", back: "After meals" },
+            { front: "What does 'q.d.' stand for?", back: "Every day" },
+            { front: "What does 'q.o.d.' stand for?", back: "Every other day" },
+            { front: "Abbreviation for National Drug Code", back: "NDC" },
+            { front: "Meaning of DAW on a prescription", back: "Dispense As Written" },
+            { front: "Fluid administered into the muscle", back: "Intramuscular (IM) injection" },
+            { front: "Drug class of Valsartan", back: "Angiotensin Receptor Blocker (ARB)" },
+            { front: "Generic name for Synthroid", back: "Levothyroxine" },
+            { front: "Indication for Prednisone", back: "Inflammation, allergic disorders, immune suppression" },
+            { front: "Drug class of Apixaban (Eliquis)", back: "Anticoagulant (Factor Xa Inhibitor)" },
+            { front: "Medical term prefix for 'kidneys'", back: "Nephro-" },
+            { front: "Medical term suffix for 'pain'", back: "-algia" },
+            { front: "Part of ADME: Drug enters bloodstream", back: "Absorption" },
+            { front: "Part of ADME: Drug broken down (often in liver)", back: "Metabolism" },
+            { front: "A drug that causes vasodilation (e.g. Lisinopril)", back: "ACE Inhibitor" },
+            { front: "A drug that reduces heart rate and contractility (e.g. Metoprolol)", back: "Beta-blocker" },
+            { front: "Drug class for depression by affecting serotonin", back: "SSRI Antidepressant" },
+            { front: "Antibiotic that inhibits bacterial cell wall synthesis", back: "Penicillins, Cephalosporins" },
+            { front: "An example of an oral solution", back: "Liquid cough syrup" },
+            { front: "A medication applied to the skin for systemic effect", back: "Transdermal patch" },
+            { front: "Route of administration for inhalers", back: "Inhalation" },
+            { front: "Route of administration for eye drops", back: "Ophthalmic" },
+            { front: "Drug used to reduce fever", back: "Antipyretic" },
+            { front: "Drug used to relieve pain", back: "Analgesic" },
+            { front: "Condition where drug should not be used", back: "Contraindication" },
+            { front: "Medical term for blood condition", back: "-emia" },
+            { front: "Prefix meaning 'above, excessive'", back: "Hyper-" },
+            { front: "Prefix meaning 'against'", back: "Anti-" },
+        ];
+
+        let currentFlashcardIndex = 0;
+        let isFlashcardFlipped = false;
+        const flashcardFront = document.getElementById('flashcard-front');
+        const flashcardBack = document.getElementById('flashcard-back');
+        const flashcardDisplay = document.getElementById('flashcard-display');
+
+
+        function loadFlashcard() {
+            if (flashcardData.length === 0) {
+                flashcardFront.textContent = "No flashcards available.";
+                flashcardBack.textContent = "No flashcards available.";
+                return;
+            }
+
+            if (currentFlashcardIndex >= flashcardData.length) {
+                shuffleArray(flashcardData); // Reshuffle when all cards have been seen
+                currentFlashcardIndex = 0;
+            }
+
+            const card = flashcardData[currentFlashcardIndex];
+            flashcardFront.textContent = card.front;
+            flashcardBack.textContent = card.back;
+
+            // Reset flip state and orientation
+            flashcardDisplay.classList.remove('flipped');
+            isFlashcardFlipped = false;
+
+            currentFlashcardIndex++;
+        }
+
+        function flipCard() {
+            isFlashcardFlipped = !isFlashcardFlipped;
+            if (isFlashcardFlipped) {
+                flashcardDisplay.classList.add('flipped');
+            } else {
+                flashcardDisplay.classList.remove('flipped');
+            }
         }
 
         // --- Days' Supply Calculator Logic ---
@@ -2220,12 +2699,13 @@
             resultDiv.textContent = `Days' Supply: ${daysSupply.toFixed(2)} days`; // Display with 2 decimal places
         }
 
-        // Load quiz and medications game by default when the page loads
+        // Load quiz, medications game, and first flashcard by default when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             loadQuiz();
             loadMatchingGame('medications'); // Load medications game by default
+            shuffleArray(flashcardData); // Initial shuffle for flashcards
+            loadFlashcard(); // Load the first flashcard
         });
     </script>
 </body>
 </html>
-�
